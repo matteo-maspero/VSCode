@@ -211,21 +211,25 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	//	shortcuts to the previous and new pigeonholes
 	prev = board + players[active].prevPosition;
 	new = board + players[active].position;
-
-	//	update the previous pigeonhole's status
+	
+	/*
+		update the previous pigeonhole's status
+		if only the active player is on the pigeonhole, set it to empty
+		if both players are on the pigeonhole, remove the active player's pawn but keep the other player's pawn
+	*/
 	if(prev->status == active)
-		//	if only the active player is on the pigeonhole, set it to empty
 		prev->status = -1;
 	else
-		//	if both players are on the pigeonhole, remove the active player's pawn but keep the other player's pawn
 		prev->status = !active;
 
-	//	update the new pigeonhole's status
+	/*
+		update the new pigeonhole's status
+		if the pigeonhole is empty, add only the active player's pawn
+		if the oter player is on the pigeonhole, add both players' pawns
+	*/
 	if(new->status == -1)
-		//	if the pigeonhole is empty, add only the active player's pawn
 		new->status = active;
 	else
-		//	if the oter player is on the pigeonhole, add both players' pawns
 		new->status = 2;
 
 	//	update both pigeonholes' display
