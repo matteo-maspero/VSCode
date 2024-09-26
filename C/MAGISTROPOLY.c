@@ -38,13 +38,15 @@ void inputPlayer(Player *dest);
 void printBoard(Pigeonhole *board);
 void startTurn(Player *players, int active);
 void rollDices(int *result);
-void movePlayer(Pigeonhole *board, Player *players, int active, int steps);
+//void movePlayer(Pigeonhole *board, Player *players, int active, int steps);
 void isGameover(Player *players, int active, int *gameover);
 void endTurn(Player *players, int *active);
 
+/*
 void clearPreviousPigeonhole(Pigeonhole *board, Player *players, int active);
 void setupCurrentPigeonhole(Pigeonhole *board, Player *players, int active);
-void updatePigeonhole(Pigeonhole *dest, Player *players);
+*/
+void updatePigeonhole(Pigeonhole *pigeonhole, Player *players);
 
 /*
 	FUNCTIONS
@@ -61,7 +63,8 @@ int main() {
 	//	setup match
 	initBoard(board);
 	initPlayers(board, players);
-	srand(time(NULL));
+	srand(time(NULL));					//	seed the random number generator
+	while(getchar() != '\n');			//	clear the input buffer
 
 	//	start the main loop
 	do {
@@ -76,7 +79,7 @@ int main() {
 		}
 
 		rollDices(&dicesResult);
-		movePlayer(board, players, active, dicesResult);
+		//movePlayer(board, players, active, dicesResult);
 
 		isGameover(players, active, &gameover);
 		endTurn(players, &active);
@@ -84,8 +87,9 @@ int main() {
 
 	//	print the final board and the winner
 	printBoard(board);
-	printf(	"[ IL VINCITORE E' %s ! ]\n"
-			"\tPremere invio per uscire...", players[active].name
+	printf(
+		"[ IL VINCITORE E' %s ! ]\n"
+		"\tPremere invio per uscire...", players[active].name
 	);
 	getchar();
 
@@ -110,8 +114,11 @@ void initPlayers(Pigeonhole *board, Player *players) {
 		//	cycle through the players and input their data
 		printf("[ GIOCATORE %d ]\n", i + 1);
 		inputPlayer(players + i);
-		movePlayer(board, players, i, 0);
 	}
+
+	//	set the players' starting positions
+	board[0].status = 2;
+	updatePigeonhole(board, players);
 }
 
 void setContent(Pigeonhole *dest) {
@@ -133,7 +140,7 @@ void setContent(Pigeonhole *dest) {
 	sprintf(dest->content, "%2d", dest->position);
 }
 
-void inputPlayers(Player *dest) {
+void inputPlayer(Player *dest) {
 	//	init the attributes of the player
 	dest->position = 0;
 	dest->prevPosition = 0;
@@ -145,17 +152,18 @@ void inputPlayers(Player *dest) {
 	
 	//	input the pawn of the player
 	printf("\tScegliere una pedina: ");
-	scanf("%c", &dest->pawn);
+	scanf("\n%c", &dest->pawn);		//	the input of the player's name leaves '\n' in the buffer, so we need to ignore it
 }
 
 void printBoard(Pigeonhole *board) {
 	int i;
 
 	//	clear the console and print the heading of the game board
-	system("cls");
-	printf(	"+----+----+----+----+----+----+----+----+----+----+\n"
-			"|                  MAGISTR-OPOLY                  |\n"
-			"+----+----+----+----+----+----+----+----+----+----+\n"
+	//system("cls");
+	printf(
+		"+----+----+----+----+----+----+----+----+----+----+\n"
+		"|                  MAGISTR-OPOLY                  |\n"
+		"+----+----+----+----+----+----+----+----+----+----+\n"
 	);
 
 	for(i = 0; i < PIGEONHOLES; i ++) {
@@ -164,14 +172,15 @@ void printBoard(Pigeonhole *board) {
 
 		//	once all pigeonholes are printed, print the bottom part of the row
 		if((i + 1) % COLUMNS == 0)
-			printf(	"|\n"
-					"+----+----+----+----+----+----+----+----+----+----+\n"
+			printf(
+				"|\n"
+				"+----+----+----+----+----+----+----+----+----+----+\n"
 			);
 	}
 }
 
 void startTurn(Player *players, int active) {
-	printf("[ TURNO DI %s ]\n", players[active].name);
+	printf("\n[ TURNO DI %s ]\n", players[active].name);
 
 	if(players[active].turnsToSkip > 0) {
 		//	if the player has to skip a turn, print the remaining turns to skip
@@ -189,6 +198,7 @@ void rollDices(int *result) {
 	printf("\tRisultato del tiro: %d\n", *result);
 }
 
+/*
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	players[active].prevPosition = players[active].position;
 	clearPreviousPigeonhole(board, players, active);
@@ -200,6 +210,7 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 
 	setupCurrentPigeonhole(board, players, active);
 }
+*/
 
 void isGameover(Player *players, int active, int *gameover) {
 	if(players[active].position == 89)
@@ -209,7 +220,7 @@ void isGameover(Player *players, int active, int *gameover) {
 void endTurn(Player *players, int *active) {
 	*active = !(*active);
 
-	printf("\tPremere un tasto qualsiasi per concludere il turno...");
+	printf("\tPremere invio per concludere il turno...");
 	getchar();
 }
 
@@ -237,17 +248,18 @@ void setupCurrentPigeonhole(Pigeonhole *board, Player *players, int active) {
 
 	updatePigeonhole(&board[row][col], players);
 }
-
-void updatePigeonhole(Pigeonhole *dest, Player *players) {
-	switch (dest->status) {
-		case -1:
-			strcpy(dest->display, dest->content);
-			break;
-		case 0: case 1:
-			sprintf(dest->display, " %c", players[dest->status].pawn);
-			break;
-		case 2:
-			sprintf(dest->display, "%c%c", players[0].pawn, players[1].pawn);
-	}
-}
 */
+
+void updatePigeonhole(Pigeonhole *pigeonhole, Player *players) {
+	if(pigeonhole->status == -1)
+		//	if the pigeonhole's status is "empty", set the display to the default content
+		strcpy(pigeonhole->display, pigeonhole->content);
+		
+	else if(pigeonhole->status == 2)
+		//	if the pigeonhole's status is "both", set the display to both players' pawns
+		sprintf(pigeonhole->display, "%c%c", players[0].pawn, players[1].pawn);
+		
+	else
+		//	otherwise, set the display to the player's pawn
+		sprintf(pigeonhole->display, " %c", players[pigeonhole->status].pawn);
+}
