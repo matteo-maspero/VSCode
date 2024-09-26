@@ -83,7 +83,6 @@ int main() {
 
 		rollDices(&result1, &result2);
 		movePlayer(board, players, active, result1 + result2);
-		getchar();		//	wait for the player to press enter
 
 		printBoard(board);
 		doStuff(board, players, active);
@@ -220,7 +219,8 @@ void rollDices(int *result1, int *result2) {
 	//	roll 2 dices (result: 2~12) and print the result
 	*result1 = (rand() % 6) + 1;
 	*result2 = (rand() % 6) + 1;
-	printf("\tRisultato del tiro: %d\n", *result1 + *result2);
+
+	printf("\tRisultato del tiro: [%d] [%d] -> %d\n", *result1, *result2, *result1 + *result2);
 }
 
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
@@ -258,10 +258,13 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	//	update both pigeonholes' display
 	updatePigeonhole(prev, players);
 	updatePigeonhole(new, players);
+
+	printf("\tLa posizione finale e' %d.\n", players[active].position + 1);
+	getchar();		//	wait for the player to press enter
 }
 
 void doStuff(Pigeonhole *board, Player *players, int active) {
-	int dices1, dices2, tot;
+	int dices1, dices2;
 
 	switch(players[active].position) {
 		case 10: case 27: case 59: case 80:
@@ -311,9 +314,9 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 			);
 
 			rollDices(&dices1, &dices2);
-			tot = dices1 + dices2;
+			int tot = dices1 + dices2;
 
-			rollDices(&dices2, &dices2);
+			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2 + tot));
 			break;
 		case 70:
