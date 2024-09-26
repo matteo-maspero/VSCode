@@ -33,7 +33,7 @@ void initBoard(Pigeonhole *board);
 void initPlayers(Pigeonhole *board, Player *players);
 
 void setContent(Pigeonhole *dest);
-void inputPlayer(Player *dest);
+void inputPlayer(Player *players, int i);
 
 void printBoard(Pigeonhole *board);
 void startTurn(Player *players, int active);
@@ -114,7 +114,7 @@ void initPlayers(Pigeonhole *board, Player *players) {
 	for(i = 0; i < PLAYERS; i ++) {
 		//	cycle through the players and input their data
 		printf("[ GIOCATORE %d ]\n", i + 1);
-		inputPlayer(players + i);
+		inputPlayer(players, i);
 	}
 
 	//	set the players' starting positions
@@ -141,19 +141,37 @@ void setContent(Pigeonhole *dest) {
 	sprintf(dest->content, "%2d", dest->position + 1);
 }
 
-void inputPlayer(Player *dest) {
+void inputPlayer(Player *players, int i) {
 	//	init the attributes of the player
-	dest->position = 0;
-	dest->prevPosition = 0;
-	dest->turnsToSkip = 0;
+	players[i].position = 0;
+	players[i].prevPosition = 0;
+	players[i].turnsToSkip = 0;
 
 	//	input the name of the player
 	printf("\tScegliere un nome: ");
-	scanf("%s", dest->name);
+
+	while(1) {
+		scanf("%s", players[i].name);
+
+		//	breaks the loop if the name is available
+		if(i == 0 || strcmp(players[1].name, players[0].name) != 0)
+			break;
+
+		printf("\tQuesto nome e' gia' stato scelto. Sceglierne un altro: ");
+	}
 	
 	//	input the pawn of the player
 	printf("\tScegliere una pedina: ");
-	scanf("\n%c", &dest->pawn);		//	the input of the player's name leaves '\n' in the buffer, so we need to ignore it
+
+	while(1) {
+		scanf("\n%c", &players[i].pawn);		//	the input of the player's name leaves '\n' in the buffer, so we need to ignore it
+
+		//	breaks the loop if the pawn is available
+		if(i == 0 || players[1].pawn != players[0].pawn)
+			break;
+
+		printf("\tQuesta pedina e' gia' statascelta. Sceglierne un'altra: ");
+	}
 }
 
 void printBoard(Pigeonhole *board) {
