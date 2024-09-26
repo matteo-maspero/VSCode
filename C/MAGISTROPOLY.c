@@ -41,8 +41,8 @@ void rollDices(int *result1, int *result2);
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps);
 
 void doStuff(Pigeonhole *board, Player *players, int active);
-void pickProbabilita(Pigeonhole *board, Player *players, int active);
 void pickImprevisto(Pigeonhole *board, Player *players, int active);
+void pickProbabilita(Pigeonhole *board, Player *players, int active);
 
 int isGameover(Player *players, int active);
 void endTurn(Player *players, int *active);
@@ -339,39 +339,6 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 	}
 }
 
-void pickProbabilita(Pigeonhole *board, Player *players, int active) {
-	int card = rand() % 3 + 1;
-	int dices1, dices2;
-
-	switch(card) {
-		case 1:
-			printf(
-				"\n\n\tProbabilita': Devi correre dal dentista!\n"
-				"\tStai fermo un turno.\n"
-			);
-
-			players[active].turnsToSkip = 1;
-			break;
-		case 2:
-			printf(
-				"\n\n\tProbabilita': Il corso di intelligenza artificiale a cui sei iscritto e' slittato!\n"
-				"\tTira nuovamente i dadi.\n"
-			);
-
-			rollDices(&dices1, &dices2);
-			movePlayer(board, players, active, (dices1 + dices2));
-			break;
-		case 3:
-			printf(
-				"\n\n\tProbabilita': La prof di italiano oggi non c'e' ed esci prima!\n"
-				"\tTira i dadi e avanza della metà del risultato.\n"
-			);
-
-			rollDices(&dices1, &dices2);
-			movePlayer(board, players, active, (dices1 + dices2) / 2);
-	}
-}
-
 void pickImprevisto(Pigeonhole *board, Player *players, int active) {
 	int card = rand() % 3 + 1;
 	int dices1, dices2;
@@ -413,6 +380,39 @@ void pickImprevisto(Pigeonhole *board, Player *players, int active) {
 
 			if(dices1 == dices2)
 				movePlayer(board, players, active, -(dices1 + dices2));
+	}
+}
+
+void pickProbabilita(Pigeonhole *board, Player *players, int active) {
+	int card = rand() % 3 + 1;
+	int dices1, dices2;
+
+	switch(card) {
+		case 1:
+			printf(
+				"\n\n\tProbabilita': Devi correre dal dentista!\n"
+				"\tStai fermo un turno.\n"
+			);
+
+			players[active].turnsToSkip = 1;
+			break;
+		case 2:
+			printf(
+				"\n\n\tProbabilita': Il corso di intelligenza artificiale a cui sei iscritto e' slittato!\n"
+				"\tTira nuovamente i dadi.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2));
+			break;
+		case 3:
+			printf(
+				"\n\n\tProbabilita': La prof di italiano oggi non c'e' ed esci prima!\n"
+				"\tTira i dadi e avanza della meta' del risultato.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2) / 2);
 	}
 }
 
