@@ -37,9 +37,12 @@ void inputPlayer(Player *players, int i);
 
 void printBoard(Pigeonhole *board);
 void startTurn(Player *players, int active);
-void rollDices(int *result);
+void rollDices(int *result1, int *result2);
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps);
+
 void doStuff(Pigeonhole *board, Player *players, int active);
+void pickProbabilita(Pigeonhole *board, Player *players, int active);
+void pickImprevisto(Pigeonhole *board, Player *players, int active);
 
 int isGameover(Player *players, int active);
 void endTurn(Player *players, int *active);
@@ -55,7 +58,7 @@ int main() {
 	Pigeonhole board[PIGEONHOLES];		//	game board
 	Player players[PLAYERS];			//	players array
 
-	int dicesResult;					//	result of the dice roll
+	int result1, result2;				//	results of the dices roll
 	int active = 0;						//	index of the active player
 	
 	//	setup match
@@ -78,8 +81,8 @@ int main() {
 			continue;
 		}
 
-		rollDices(&dicesResult);
-		movePlayer(board, players, active, dicesResult);
+		rollDices(&result1, &result2);
+		movePlayer(board, players, active, result1 + result2);
 		getchar();		//	wait for the player to press enter
 
 		printBoard(board);
@@ -151,7 +154,7 @@ void inputPlayer(Player *players, int i) {
 	//	init the attributes of the player
 	players[i].position = 0;
 	players[i].prevPosition = 0;
-	players[i].turnsToSkip = 2;
+	players[i].turnsToSkip = 0;
 
 	//	input the name of the player
 	printf("\tScegliere un nome: ");
@@ -209,14 +212,15 @@ void startTurn(Player *players, int active) {
 	printf("\tPosizione attuale: %d\n", players[active].position + 1);
 }
 
-void rollDices(int *result) {
+void rollDices(int *result1, int *result2) {
 	//	wait for the player to press a key
 	printf("\tPremere invio per lanciare i dadi...");
 	getchar();
 
 	//	roll 2 dices (result: 2~12) and print the result
-	*result = (rand() % 11) + 2;
-	printf("\tRisultato del tiro: %d\n", *result);
+	*result1 = (rand() % 6) + 1;
+	*result2 = (rand() % 6) + 1;
+	printf("\tRisultato del tiro: %d\n", *result1 + *result2);
 }
 
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
@@ -257,14 +261,14 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 }
 
 void doStuff(Pigeonhole *board, Player *players, int active) {
-	int dices1, dices2;
+	int dices1, dices2, tot;
 
 	switch(players[active].position) {
 		case 10: case 27: case 59: case 80:
-			//TODO
+			pickImprevisto(board, players, active);
 			break;
 		case 16: case 34: case 62: case 87:
-			//TODO
+			pickProbabilita(board, players, active);
 			break;
 		case 5:
 			printf(
@@ -280,8 +284,8 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
 			);
 
-			rollDices(&dices1);
-			movePlayer(board, players, active, dices1 * -1);
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2) * -1);
 			break;
 		case 24:
 			printf(
@@ -289,8 +293,8 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi.\n"
 			);
 
-			rollDices(&dices1);
-			movePlayer(board, players, active, dices1);
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2));
 			break;
 		case 41:
 			printf(
@@ -306,9 +310,11 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira due volte i dadi, avanzerai di tante celle quanto vale la loro somma.\n"
 			);
 
-			rollDices(&dices1);
-			rollDices(&dices2);
-			movePlayer(board, players, active, dices1 + dices2);
+			rollDices(&dices1, &dices2);
+			tot = dices1 + dices2;
+
+			rollDices(&dices2, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2 + tot));
 			break;
 		case 70:
 			printf(
@@ -316,8 +322,8 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi.\n"
 			);
 
-			rollDices(&dices1);
-			movePlayer(board, players, active, dices1);
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2));
 			break;
 		case 77:
 			printf(
@@ -325,9 +331,85 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
 			);
 
-			rollDices(&dices1);
-			movePlayer(board, players, active, dices1 * -1);
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2) * -1);
+	}
+}
+
+void pickProbabilita(Pigeonhole *board, Player *players, int active) {
+	int card = rand() % 3 + 1;
+	int dices1, dices2;
+
+	switch(card) {
+		case 1:
+			printf(
+				"\n\n\tProbabilita': Devi correre dal dentista!\n"
+				"\tStai fermo un turno.\n"
+			);
+
+			players[active].turnsToSkip = 1;
 			break;
+		case 2:
+			printf(
+				"\n\n\tProbabilita': Il corso di intelligenza artificiale a cui sei iscritto e' slittato!\n"
+				"\tTira nuovamente i dadi.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2));
+			break;
+		case 3:
+			printf(
+				"\n\n\tProbabilita': La prof di italiano oggi non c'e' ed esci prima!\n"
+				"\tTira i dadi e avanza della metà del risultato.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			movePlayer(board, players, active, (dices1 + dices2) / 2);
+	}
+}
+
+void pickImprevisto(Pigeonhole *board, Player *players, int active) {
+	int card = rand() % 3 + 1;
+	int dices1, dices2;
+
+	switch(card) {
+		case 1:
+			printf(
+				"\n\n\tImprevisto: Sei in bilico sui debiti!\n"
+				"\tTira i dadi se esce pari avanza del numero uscito altrimenti torna indietro.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			int tot = dices1 + dices2;
+
+			if(tot % 2)
+				tot *= -1;
+
+			movePlayer(board, players, active, tot);
+			break;
+		case 2:
+			printf(
+				"\n\n\tImprevisto: Forse ti interrogano di informatica!\n"
+				"\tTira i dadi se esce 9 (il tuo numero) stai fermo un turno.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+			
+			if(dices1 + dices2 == 9)
+				players[active].turnsToSkip = 1;
+
+			break;
+		case 3:
+			printf(
+				"\n\n\tImprevisto: Verifica a sorpresa!\n"
+				"\tTira i dadi se due numeri escono in coppia torni indietro del valore ottenuto.\n"
+			);
+
+			rollDices(&dices1, &dices2);
+
+			if(dices1 == dices2)
+				movePlayer(board, players, active, -(dices1 + dices2));
 	}
 }
 
