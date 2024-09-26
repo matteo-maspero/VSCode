@@ -43,6 +43,7 @@ void isGameover(Player *players, int active, int *gameover);
 void endTurn(Player *players, int *active);
 
 void updatePigeonhole(Pigeonhole *pigeonhole, Player *players);
+int min(int a, int b);
 
 /*
 	FUNCTIONS
@@ -63,7 +64,7 @@ int main() {
 	while(getchar() != '\n');			//	clear the input buffer
 
 	//	start the main loop
-	while(!gameover) {
+	while(1) {
 		printBoard(board);
 		startTurn(players, active);
 
@@ -76,15 +77,18 @@ int main() {
 
 		rollDices(&dicesResult);
 		movePlayer(board, players, active, dicesResult);
-
 		isGameover(players, active, &gameover);
+
+		if(gameover)
+			break;
+
 		endTurn(players, &active);
 	}
 
 	//	print the final board and the winner
 	printBoard(board);
 	printf(
-		"[ IL VINCITORE E' %s ! ]\n"
+		"[ IL VINCITORE E' '%s' ]\n"
 		"\tPremere invio per uscire...", players[active].name
 	);
 	getchar();
@@ -98,6 +102,7 @@ void initBoard(Pigeonhole *board) {
 	for(i = 0; i < PIGEONHOLES; i ++) {
 		board[i].position = i;							//	set position [0 - 89]
 		board[i].status = -1;							//	set status to empty
+
 		setContent(board + i);							//	set the default content
 		strcpy(board[i].display, board[i].content);		//	display the default content
 	}
@@ -155,7 +160,7 @@ void printBoard(Pigeonhole *board) {
 	int i;
 
 	//	clear the console and print the heading of the game board
-	//system("cls");
+	system("cls");
 	printf(
 		"+----+----+----+----+----+----+----+----+----+----+\n"
 		"|                  MAGISTR-OPOLY                  |\n"
@@ -176,7 +181,7 @@ void printBoard(Pigeonhole *board) {
 }
 
 void startTurn(Player *players, int active) {
-	printf("\n[ TURNO DI %s ]\n", players[active].name);
+	printf("\n[ TURNO DI '%s' ]\n", players[active].name);
 
 	if(players[active].turnsToSkip > 0)
 		//	if the player has to skip a turn, print the remaining turns to skip
@@ -196,42 +201,36 @@ void rollDices(int *result) {
 }
 
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
-	Pigeonhole *temp;
+	Pigeonhole *prev;
+	Pigeonhole *new;
 
 	//	update the active player's previous position
 	players[active].prevPosition = players[active].position;
+	players[active].position = min(players[active].position + steps, 89);
 
-	//	if the player exceeds last pigeonhole, cap the position to 89
-	if(players[active].position + steps > 89)
-		players[active].position = 89;
-	else
-		players[active].position = players[active].position + steps;
+	//	shortcuts to the previous and new pigeonholes
+	prev = board + players[active].prevPosition;
+	new = board + players[active].position;
 
 	//	update the previous pigeonhole's status
-	temp = board + players[active].prevPosition;
-
-	if(temp->status == active)
+	if(prev->status == active)
 		//	if only the active player is on the pigeonhole, set it to empty
-		temp->status = -1;
+		prev->status = -1;
 	else
 		//	if both players are on the pigeonhole, remove the active player's pawn but keep the other player's pawn
-		temp->status = !active;
+		prev->status = !active;
 
-	//	update the previous pigeonhole's display
-	updatePigeonhole(temp, players);
-
-	//	update the previous pigeonhole's status
-	temp = board + players[active].position;
-	
-	if(temp->status == -1)
+	//	update the new pigeonhole's status
+	if(new->status == -1)
 		//	if the pigeonhole is empty, add only the active player's pawn
-		temp->status = active;
+		new->status = active;
 	else
 		//	if the oter player is on the pigeonhole, add both players' pawns
-		temp->status = 2;
+		new->status = 2;
 
-	//	update the new pigeonhole's display
-	updatePigeonhole(temp, players);
+	//	update both pigeonholes' display
+	updatePigeonhole(prev, players);
+	updatePigeonhole(new, players);
 }
 
 void isGameover(Player *players, int active, int *gameover) {
@@ -258,4 +257,9 @@ void updatePigeonhole(Pigeonhole *pigeonhole, Player *players) {
 	else
 		//	otherwise, set the display to the player's pawn
 		sprintf(pigeonhole->display, " %c", players[pigeonhole->status].pawn);
+}
+
+int min(int a, int b) {
+	//	returns the smallest of the two given numbers
+	return a < b ? a : b;
 }
