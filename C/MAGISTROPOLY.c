@@ -39,7 +39,9 @@ void printBoard(Pigeonhole *board);
 void startTurn(Player *players, int active);
 void rollDices(int *result);
 void movePlayer(Pigeonhole *board, Player *players, int active, int steps);
-void isGameover(Player *players, int active, int *gameover);
+void doStuff(Pigeonhole *board, Player *players, int active);
+
+int isGameover(Player *players, int active);
 void endTurn(Player *players, int *active);
 
 void updatePigeonhole(Pigeonhole *pigeonhole, Player *players);
@@ -55,7 +57,6 @@ int main() {
 
 	int dicesResult;					//	result of the dice roll
 	int active = 0;						//	index of the active player
-	int gameover = 0;					//	gameover flag
 	
 	//	setup match
 	initBoard(board);
@@ -70,16 +71,21 @@ int main() {
 
 		//	if the player has to skip this turn, end it and decrease the counter
 		if(players[active].turnsToSkip > 0) {
-			endTurn(players, &active);
 			players[active].turnsToSkip --;
+
+			printf("\tTurno saltato: %d rimanenti.\n", players[active].turnsToSkip);
+			endTurn(players, &active);
 			continue;
 		}
 
 		rollDices(&dicesResult);
 		movePlayer(board, players, active, dicesResult);
-		isGameover(players, active, &gameover);
+		getchar();		//	wait for the player to press enter
 
-		if(gameover)
+		printBoard(board);
+		doStuff(board, players, active);
+
+		if(isGameover(players, active))
 			break;
 
 		endTurn(players, &active);
@@ -88,7 +94,7 @@ int main() {
 	//	print the final board and the winner
 	printBoard(board);
 	printf(
-		"[ IL VINCITORE E' '%s' ]\n"
+		"\n[ IL VINCITORE E' '%s' ]\n"
 		"\tPremere invio per uscire...", players[active].name
 	);
 	getchar();
@@ -145,7 +151,7 @@ void inputPlayer(Player *players, int i) {
 	//	init the attributes of the player
 	players[i].position = 0;
 	players[i].prevPosition = 0;
-	players[i].turnsToSkip = 0;
+	players[i].turnsToSkip = 2;
 
 	//	input the name of the player
 	printf("\tScegliere un nome: ");
@@ -200,12 +206,7 @@ void printBoard(Pigeonhole *board) {
 
 void startTurn(Player *players, int active) {
 	printf("\n[ TURNO DI '%s' ]\n", players[active].name);
-
-	if(players[active].turnsToSkip > 0)
-		//	if the player has to skip a turn, print the remaining turns to skip
-		printf("\tTurno saltato: %d rimanenti.\n", players[active].turnsToSkip - 1);
-	else
-		printf("\tPosizione attuale: %d\n", players[active].position + 1);
+	printf("\tPosizione attuale: %d\n", players[active].position + 1);
 }
 
 void rollDices(int *result) {
@@ -255,17 +256,94 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	updatePigeonhole(new, players);
 }
 
-void isGameover(Player *players, int active, int *gameover) {
+void doStuff(Pigeonhole *board, Player *players, int active) {
+	int dices1, dices2;
+
+	switch(players[active].position) {
+		case 10: case 27: case 59: case 80:
+			//TODO
+			break;
+		case 16: case 34: case 62: case 87:
+			//TODO
+			break;
+		case 5:
+			printf(
+				"\n\n\tPalestra: devi fare 100 piegamenti perche' sei arrivato in ritardo!\n"
+				"\tSei costretto a saltare il prossimo turno.\n"
+			);
+
+			players[active].turnsToSkip = 1;
+			break;
+		case 19:
+			printf(
+				"\n\n\tLaboratorio di informatica: un tuo programma ha craccato il database della scuola!\n"
+				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
+			);
+
+			rollDices(&dices1);
+			movePlayer(board, players, active, dices1 * -1);
+			break;
+		case 24:
+			printf(
+				"\n\n\tLaboratorio di chimica: Hai riprodotto la fusione nucleare durante l'ora di lezione!\n"
+				"\tTira nuovamente i dadi.\n"
+			);
+
+			rollDices(&dices1);
+			movePlayer(board, players, active, dices1);
+			break;
+		case 41:
+			printf(
+				"\n\n\tLaboratorio telecomunicazioni: hai fatto saltare in aria la board!\n"
+				"\tSei costretto a saltare i prossimi due turni.\n"
+			);
+
+			players[active].turnsToSkip = 2;
+			break;
+		case 48:
+			printf(
+				"\n\n\tPalestra: hai vinto la gara di istituto di Triathlon!\n"
+				"\tTira due volte i dadi, avanzerai di tante celle quanto vale la loro somma.\n"
+			);
+
+			rollDices(&dices1);
+			rollDices(&dices2);
+			movePlayer(board, players, active, dices1 + dices2);
+			break;
+		case 70:
+			printf(
+				"\n\n\tLaboratorio di sistemi e reti: ti sei messo in contatto con Marte!\n"
+				"\tTira nuovamente i dadi.\n"
+			);
+
+			rollDices(&dices1);
+			movePlayer(board, players, active, dices1);
+			break;
+		case 77:
+			printf(
+				"\n\n\tLaboratorio di fisica: hai inventato la pozione della felicita'!\n"
+				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
+			);
+
+			rollDices(&dices1);
+			movePlayer(board, players, active, dices1 * -1);
+			break;
+	}
+}
+
+int isGameover(Player *players, int active) {
 	//	check if the active player has reached the last pigeonhole
 	if(players[active].position == 89)
-		*gameover = 1;
+		return 1;
+
+	return 0;
 }
 
 void endTurn(Player *players, int *active) {
 	//	switch the active player
 	*active = !(*active);
 
-	printf("\tPremere invio per concludere il turno...");
+	printf("\n\n\tPremere invio per concludere il turno...");
 	getchar();
 }
 
