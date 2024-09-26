@@ -211,7 +211,7 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	//	shortcuts to the previous and new pigeonholes
 	prev = board + players[active].prevPosition;
 	new = board + players[active].position;
-	
+
 	/*
 		update the previous pigeonhole's status
 		if only the active player is on the pigeonhole, set it to empty
@@ -252,14 +252,16 @@ void endTurn(Player *players, int *active) {
 }
 
 void updatePigeonhole(Pigeonhole *pigeonhole, Player *players) {
+	/*
+		if the pigeonhole's status is "empty", set the display to the default content
+		if the pigeonhole's status is "both", set the display to both players' pawns
+		else, set the display to the player's pawn
+	*/
 	if(pigeonhole->status == -1)
-		//	if the pigeonhole's status is "empty", set the display to the default content
 		strcpy(pigeonhole->display, pigeonhole->content);
 	else if(pigeonhole->status == 2)
-		//	if the pigeonhole's status is "both", set the display to both players' pawns
 		sprintf(pigeonhole->display, "%c%c", players[0].pawn, players[1].pawn);
 	else
-		//	otherwise, set the display to the player's pawn
 		sprintf(pigeonhole->display, " %c", players[pigeonhole->status].pawn);
 }
 
