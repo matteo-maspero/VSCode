@@ -265,9 +265,11 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 
 	switch(players[active].position) {
 		case 10: case 27: case 59: case 80:
+			//	if the player lands on an "Imprevisto" pigeonhole
 			pickImprevisto(board, players, active);
 			break;
 		case 16: case 34: case 62: case 87:
+			//	if the player lands on a "Probabilita'" pigeonhole
 			pickProbabilita(board, players, active);
 			break;
 		case 5:
@@ -276,6 +278,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tSei costretto a saltare il prossimo turno.\n"
 			);
 
+			//	skips the next turn
 			players[active].turnsToSkip = 1;
 			break;
 		case 19:
@@ -284,6 +287,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
 			);
 
+			//	rolls the dices again and moves the player backwards
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2) * -1);
 			break;
@@ -293,6 +297,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi.\n"
 			);
 
+			//	rolls the dices again and moves the player forward
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2));
 			break;
@@ -302,6 +307,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tSei costretto a saltare i prossimi due turni.\n"
 			);
 
+			//	skips the next two turns
 			players[active].turnsToSkip = 2;
 			break;
 		case 48:
@@ -310,6 +316,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira due volte i dadi, avanzerai di tante celle quanto vale la loro somma.\n"
 			);
 
+			//	rolls the dices twice and moves the player forward
 			rollDices(&dices1, &dices2);
 			int tot = dices1 + dices2;
 
@@ -322,6 +329,7 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi.\n"
 			);
 
+			//	rolls the dices again and moves the player forward
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2));
 			break;
@@ -331,10 +339,12 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi, ma sta volta tornerai indietro.\n"
 			);
 
+			//	rolls the dices again and moves the player backwards
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2) * -1);
 		default:
-			getchar();		//	wait for the player to press enter
+			//	wait for the player to press enter
+			getchar();
 	}
 }
 
@@ -349,6 +359,7 @@ void pickImprevisto(Pigeonhole *board, Player *players, int active) {
 				"\tTira i dadi se esce pari avanza del numero uscito altrimenti torna indietro.\n"
 			);
 
+			//	rolls the dices and moves the player accordingly
 			rollDices(&dices1, &dices2);
 			int tot = dices1 + dices2;
 
@@ -363,6 +374,7 @@ void pickImprevisto(Pigeonhole *board, Player *players, int active) {
 				"\tTira i dadi se esce 9 (il tuo numero) stai fermo un turno.\n"
 			);
 
+			//	rolls the dices and skips the next turn if the sum is 9
 			rollDices(&dices1, &dices2);
 			
 			if(dices1 + dices2 == 9)
@@ -375,6 +387,7 @@ void pickImprevisto(Pigeonhole *board, Player *players, int active) {
 				"\tTira i dadi se due numeri escono in coppia torni indietro del valore ottenuto.\n"
 			);
 
+			//	rolls the dices and moves the player backwards if the results are the same
 			rollDices(&dices1, &dices2);
 
 			if(dices1 == dices2)
@@ -393,6 +406,7 @@ void pickProbabilita(Pigeonhole *board, Player *players, int active) {
 				"\tStai fermo un turno.\n"
 			);
 
+			//	skips the next turn
 			players[active].turnsToSkip = 1;
 			break;
 		case 2:
@@ -401,6 +415,7 @@ void pickProbabilita(Pigeonhole *board, Player *players, int active) {
 				"\tTira nuovamente i dadi.\n"
 			);
 
+			//	rolls the dices again and moves the player forward
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2));
 			break;
@@ -410,6 +425,7 @@ void pickProbabilita(Pigeonhole *board, Player *players, int active) {
 				"\tTira i dadi e avanza della meta' del risultato.\n"
 			);
 
+			//	rolls the dices and moves the player forward of half the sum
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2) / 2);
 	}
