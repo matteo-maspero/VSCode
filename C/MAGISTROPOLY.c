@@ -84,9 +84,6 @@ int main() {
 		rollDices(&result1, &result2);
 		movePlayer(board, players, active, result1 + result2);
 
-		printBoard(board);
-		doStuff(board, players, active);
-
 		if(isGameover(players, active))
 			break;
 
@@ -260,7 +257,7 @@ void movePlayer(Pigeonhole *board, Player *players, int active, int steps) {
 	updatePigeonhole(new, players);
 
 	printf("\tLa posizione finale e' %d.\n", players[active].position + 1);
-	getchar();		//	wait for the player to press enter
+	doStuff(board, players, active);
 }
 
 void doStuff(Pigeonhole *board, Player *players, int active) {
@@ -336,6 +333,8 @@ void doStuff(Pigeonhole *board, Player *players, int active) {
 
 			rollDices(&dices1, &dices2);
 			movePlayer(board, players, active, (dices1 + dices2) * -1);
+		default:
+			getchar();		//	wait for the player to press enter
 	}
 }
 
@@ -428,7 +427,7 @@ void endTurn(Player *players, int *active) {
 	//	switch the active player
 	*active = !(*active);
 
-	printf("\n\n\tPremere invio per concludere il turno...");
+	printf("\n\tPremere invio per concludere il turno...");
 	getchar();
 }
 
