@@ -1,26 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct lista {
+typedef struct node {
 	int value;
-	struct lista *next;
-} Lista;
+	struct node *next;
+} Node;
 
-Lista *new(int value);
-void append(Lista *lista, Lista *entry);
-void insert(Lista **lista, Lista *entry, int pos);
+typedef Node* List;
+
+List new(int value);
+void append(List list, Node *entry);
+void insert(List *list, Node *entry, int pos);
 
 int main() {
-	Lista *lista = new(0);
-	Lista *nodo1 = new(1);
-	Lista *nodo2 = new(2);
-	Lista *nodo3 = new(3);
+	List list = new(0);
+	Node *node1 = new(1);
+	Node *node2 = new(2);
+	Node *node3 = new(3);
 
-	append(lista, nodo1);
-	append(lista, nodo3);
-	insert(&lista, nodo2, 5);
+	append(list, node1);
+	append(list, node2);
+	insert(&list, node3, 2);
 
-	Lista *idx = lista;
+	Node *idx = list;
 
 	while(idx != NULL) {
 		printf("%d\n", idx->value);
@@ -30,16 +32,16 @@ int main() {
 	return 0;
 }
 
-Lista *new(int value) {
-	Lista *new = (Lista *)malloc(sizeof(Lista));
+Node *new(int value) {
+	Node *new = (Node*)malloc(sizeof(Node));
 	new->value = value;
 	new->next = NULL;
 
 	return new;
 }
 
-void append(Lista *lista, Lista *entry) {
-	Lista *node = lista;
+void append(List list, Node *entry) {
+	Node *node = list;
 
 	while (node->next != NULL) {
 		node = node->next;
@@ -48,18 +50,18 @@ void append(Lista *lista, Lista *entry) {
 	node->next = entry;
 }
 
-void insert(Lista **lista, Lista *entry, int pos) {
-	Lista *node = *lista;
+void insert(List *list, Node *entry, int pos) {
+	Node *node = *list;
 	int i = 0;
 
-	while(node->next != NULL && i < pos - 1) {
+	while(node->next != NULL && i < pos) {
 		node = node->next;
 		i ++;
 	}
 
 	if(pos == 0) {
-		entry->next = *lista;
-		*lista = entry;
+		entry->next = *list;
+		*list = entry;
 	} else {
 		entry->next = node->next;
 		node->next = entry;
