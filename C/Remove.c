@@ -12,7 +12,7 @@ typedef Node* List;
 
 Node *createNode(Data value);
 void append(List node, Data value);
-void pop(List node);
+void pop(List *stack, int position);
 void print(List node);
 
 int main() {
@@ -22,18 +22,16 @@ int main() {
 	append(stack, 3);
 	append(stack, 4);
 
-	pop(stack);
-	pop(stack);
+	pop(&stack, 4);
 	print(stack);
-
+	
 	return 0;
 }
 
 Node *createNode(Data value) {
-	Node * result = (Node*) malloc(sizeof(Node));
+	Node *result = (Node*) malloc(sizeof(Node));
 	result->value = value;
 	result->next = NULL;
-
 	return result;
 }
 
@@ -41,26 +39,33 @@ void append(List node, Data value) {
 	while(node->next != NULL) {
 		node = node->next;
 	}
-
 	node->next = createNode(value);
 }
 
-void pop(List node) {
-	if(node == NULL)
+void pop(List *stack, int position) {
+	if(position < 0)
 		return;
 
-	if(node->next == NULL) {
-		free(node);
-		node = NULL;
+	Node *node;
+
+	if (position == 0) {
+		node = (*stack)->next;
+		free(*stack);
+		*stack = node;
 		return;
 	}
 
-	while(node->next->next != NULL) {
+	int i = 0;
+	node = *stack;
+
+	while(node->next != NULL && i < position - 1) {
 		node = node->next;
+		i++;
 	}
 
+	Node *temp = node->next->next;
 	free(node->next);
-	node->next = NULL;
+	node->next = temp;
 }
 
 void print(List node) {
