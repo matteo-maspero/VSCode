@@ -27,20 +27,20 @@ Node* initNode(int value);
 Node* appendNode(Node* head, int value);
 
 /*
-	@brief Pops a node from the given list;
-	@param head: Pointer to the head of the list;
-	@param position: Position of the node to pop;
-	@return Pointer to the head of the list.
-*/
-Node* popNode(Node* head, unsigned int position);
-
-/*
 	@brief Removes a node from the given list;
 	@param head: Pointer to the head of the list;
 	@param value: Value of the node to remove;
 	@return Pointer to the head of the list.
 */
 Node* removeNode(Node* head, int value);
+
+/*
+	@brief Pops a node from the given list;
+	@param head: Pointer to the head of the list;
+	@param position: Position of the node to pop;
+	@return Pointer to the head of the list.
+*/
+Node* popNode(Node* head, unsigned int position);
 
 /*
 	@brief Prints the given list;
@@ -63,14 +63,14 @@ int main() {
 	printf("\nLista orginale:\n");
 	printList(head);
 
-	//	Pop the chosen node (by position);
-	head = popNode(head, -1);
-	printf("\nLista dopo pop:\n");
+	//	Remove the chosen node (by value);
+	head = removeNode(head, 1);
+	printf("\nLista dopo remove:\n");
 	printList(head);
 
-	//	Remove the chosen node (by value);
-	head = removeNode(head, 4);
-	printf("\nLista dopo remove:\n");
+	//	Pop the chosen node (by position);
+	head = popNode(head, 5);
+	printf("\nLista dopo pop:\n");
 	printList(head);
 
 	return 0;
@@ -99,37 +99,6 @@ Node* appendNode(Node* head, int value) {
 	return head;
 }
 
-Node* popNode(Node* head, unsigned int position) {
-	Node* toPop = head;
-
-	//	If the desired node is the first one, return the second one;
-	if(position == 0) {
-		head = head->next;
-		free(toPop);
-		return head;
-	}
-
-	Node* prev = head;
-
-	//	Iterate through the list to find the desired node;
-	while(toPop->next != NULL && --position > 0) {
-		prev = toPop;
-		toPop = toPop->next;
-	}
-
-	//	If the desired node is the last one, return the previous one;
-	if(toPop->next == NULL) {
-		free(toPop);
-		prev->next = NULL;
-		return head;
-	}
-
-	//	Otherwise, return the list without the desired node;
-	prev->next = toPop->next;
-	free(toPop);
-	return head;
-}
-
 Node* removeNode(Node* head, int value) {
 	Node* toRemove = head;
 
@@ -155,6 +124,40 @@ Node* removeNode(Node* head, int value) {
 	//	Otherwise, return the list without the desired node;
 	prev->next = toRemove->next;
 	free(toRemove);
+	return head;
+}
+
+Node* popNode(Node* head, unsigned int position) {
+	Node* toPop;
+
+	//	If the desired node is the first one, return the second one;
+	if(position == 0) {
+		toPop = head;
+		head = head->next;
+
+		free(toPop);
+		return head;
+	}
+
+	Node* prev = head;
+	toPop = head->next;
+
+	//	Iterate through the list to find the desired node;
+	while(toPop->next != NULL && --position > 0) {
+		prev = toPop;
+		toPop = toPop->next;
+	}
+
+	//	If the desired node is the last one, return the previous one;
+	if(toPop->next == NULL) {
+		free(toPop);
+		prev->next = NULL;
+		return head;
+	}
+
+	//	Otherwise, return the list without the desired node;
+	prev->next = toPop->next;
+	free(toPop);
 	return head;
 }
 
