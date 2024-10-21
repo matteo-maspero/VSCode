@@ -3,74 +3,46 @@
 
 typedef int Data;
 
-typedef struct struct_node {
+typedef struct __node {
 	Data value;
-	struct struct_node *next;
+	struct __node *next;
 } Node;
 
 typedef Node* List;
 
 Node *createNode(Data value);
-void append(List node, Data value);
-void pop(List *stack, int position);
-void print(List node);
+void print(List src);
 
 int main() {
-	List stack = createNode(0);
-	append(stack, 1);
-	append(stack, 2);
-	append(stack, 3);
-	append(stack, 4);
-
-	pop(&stack, 4);
-	print(stack);
+	List myList = NULL;
 	
 	return 0;
 }
 
 Node *createNode(Data value) {
-	Node *result = (Node*) malloc(sizeof(Node));
-	result->value = value;
-	result->next = NULL;
-	return result;
+	Node *newNode = (Node*) malloc(sizeof(Node));
+	newNode->value = value;
+	newNode->next = NULL;
+	return newNode;
 }
 
-void append(List node, Data value) {
-	while(node->next != NULL) {
-		node = node->next;
+void append(List *stack, Data value) {
+	Node *newNode = createNode(value);
+	
+	if(*stack == NULL) {
+		*stack = newNode;
+	} else {
+		Node *node = *stack;
+		while(node->next != NULL) {
+			node = node->next;
+		}
+		node->next = newNode;
 	}
-	node->next = createNode(value);
 }
 
-void pop(List *stack, int position) {
-	if(position < 0)
-		return;
-
-	Node *node;
-
-	if (position == 0) {
-		node = (*stack)->next;
-		free(*stack);
-		*stack = node;
-		return;
-	}
-
-	int i = 0;
-	node = *stack;
-
-	while(node->next != NULL && i < position - 1) {
-		node = node->next;
-		i++;
-	}
-
-	Node *temp = node->next->next;
-	free(node->next);
-	node->next = temp;
-}
-
-void print(List node) {
-	while(node != NULL) {
-		printf("%d\t", node->value);
-		node = node->next;
+void print(List src) {
+	while(src != NULL) {
+		printf("%d\t", src->value);
+		src = src->next;
 	}
 }
