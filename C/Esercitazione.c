@@ -10,8 +10,11 @@ typedef struct Node {
 Node* createNode(int data);
 Node* addNode(Node* head, int data);
 Node* appendNode(Node* head, int data);
-Node* popNode(Node* head, int index);
+Node* popNode(Node* head, unsigned int index);
+int listLength(Node* head);
 void printList(Node* head);
+
+Node* onBusStop(Node* people, int N);
 
 int main() {
 	unsigned int N;
@@ -25,16 +28,13 @@ int main() {
 	scanf("%u", &F);
 
 	Node* people = NULL;
+	int i;
 
-	people = addNode(people, 1);
-	people = addNode(people, 2);
-	people = addNode(people, 3);
-	people = addNode(people, 4);
-	people = addNode(people, 5);
-
-	people = popNode(people, 2);
-
-	printList(people);
+	for(i = 0; i < F; i++) {
+		printf("\nFermata %d", i + 1);
+		people = onBusStop(people, N);
+		printList(people);
+	}
 
 	return 0;
 }
@@ -65,7 +65,7 @@ Node* appendNode(Node* head, int data) {
 	return head;
 }
 
-Node* popNode(Node* head, int index) {
+Node* popNode(Node* head, unsigned int index) {
 	if(head == NULL)
 		return NULL;
 
@@ -79,10 +79,7 @@ Node* popNode(Node* head, int index) {
 
 	Node* prev;
 
-	while(--index > 0) {
-		if(toPop->next == NULL)
-			return head;
-		
+	while(toPop->next != NULL && --index > 0) {
 		prev = toPop;
 		toPop = toPop->next;
 	}
@@ -92,10 +89,56 @@ Node* popNode(Node* head, int index) {
 	return head;
 }
 
+int listLength(Node* head) {
+	int length = 0;
+
+	while(head != NULL) {
+		head = head->next;
+		length++;
+	}
+
+	return length;
+}
+
 void printList(Node* head) {
 	while(head != NULL) {
-		printf("%d ", head->data);
+		printf("\t%d", head->data);
 		head = head->next;
 	}
-	printf("\n");
+}
+
+Node* onBusStop(Node* people, int N) {
+	int i;
+	
+	int peopleOnBus = listLength(people);
+	int peopleToGetOut = rand() % (peopleOnBus + 1);
+	int peopleToGetIn = rand() % (N - peopleOnBus + 1);
+	int door = rand() % 2;
+	int name;
+
+	printf(
+		"\n\tSono scese %d persone;"
+		"\n\tsono salite %d persone;",
+		peopleToGetOut, peopleToGetIn
+	);
+
+	if(door) {
+		printf("\n\tporta anteriore.\n");
+
+		for(i = 0; i < peopleToGetOut; i++)
+			people = popNode(people, 0);
+		
+		for(i = 0; i < peopleToGetIn; i++)
+			people = addNode(people, rand() % 1000);
+	} else {
+		printf("\n\tporta posteriore.\n");
+
+		for(i = 0; i < peopleToGetOut; i++)
+			people = popNode(people, -1);
+		
+		for(i = 0; i < peopleToGetIn; i++)
+			people = appendNode(people, rand() % 1000);
+	}
+
+	return people;
 }
