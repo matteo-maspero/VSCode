@@ -14,7 +14,9 @@ typedef struct Node {
 
 Node* init_node(char id[3], int length);
 Node* append_node(Node* head, char id[3], int length);
-Node* shift_node(Node* head);
+Node* insert_node(Node* head, char id[3], int length, unsigned int position);
+Node* shift_head_left(Node* head);
+Node* pop_head(Node* head);
 void print_list(Node* head);
 
 /*
@@ -22,19 +24,12 @@ void print_list(Node* head);
 */
 
 int main() {
-	/*
-	Node* col1[4] = {{"P1", 60}, {"P2", 50}, {"P3", 45}, {"P4", 30}};
-	Node* col2[4] = {{"M1", 80}, {"M2", 20}, {"M3", 15}, {"M4", 60}, {"M5", 30}};
-	Node* col3[3] = {{"R1", 50}, {"R2", 40}, {"R3", 10}};
-	*/
-	Node* system_stack = NULL;
-	Node* process_stack = NULL;
+	Node* g1[] = { init_node("P1", 60), init_node("P2", 50), init_node("P3", 45), init_node("P4", 30) };
+	Node* g2[] = { init_node("M1", 80), init_node("M2", 20), init_node("M3", 15), init_node("M4", 60), init_node("M5", 30) };
+	Node* g3[] = { init_node("R1", 50),	init_node("R2", 40), init_node("R3", 10) };
 
-	process_stack = append_node(process_stack, "P0", 10);
-	process_stack = append_node(process_stack, "P1", 11);
-	process_stack = append_node(process_stack, "P2", 12);
-	process_stack = append_node(process_stack, "P3", 13);
-	process_stack = append_node(process_stack, "P4", 14);
+	Node* process_stack = NULL;
+	Node* system_process = NULL;
 
 	print_list(process_stack);
 
@@ -67,10 +62,46 @@ Node* append_node(Node* head, char* id, int length) {
 	return head;
 }
 
-Node* shift_node(Node* head) {
+Node* insert_node(Node* head, char id[3], int length, unsigned int position) {
+	if(head == NULL)
+		return init_node(id, length);
+
+	Node* item = head;
+	Node* new_node = init_node(id, length);
+
+	if(position == 0) {
+		new_node->next = head;
+		return new_node;
+	}
+
+	while(position > 1 && item->next != head) {
+		item = item->next;
+		position--;
+	}
+
+	new_node->next = item->next;
+	item->next = new_node;
+	return head;
+}
+
+Node* shift_head_left(Node* head) {
 	if(head == NULL)
 		return NULL;
 
+	return head->next;
+}
+
+Node* pop_head(Node* head) {
+	if(head == NULL)
+		return NULL;
+
+	Node* to_pop = head;
+
+	while(head->next != to_pop)
+		head = head->next;
+
+	head->next = to_pop->next;
+	free(to_pop);
 	return head->next;
 }
 
