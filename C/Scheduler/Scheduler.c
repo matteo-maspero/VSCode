@@ -21,22 +21,51 @@ void print_list(Node* head);
 	FUNCTIONS
 */
 
+void fill_inputX(FILE *input, Node* stack) {
+	char name[3];
+	int length;
+	int i = 0;
+
+	while(fscanf(input, "%s %d", name, length) != EOF) {
+		stack = append_node(stack, name, length);
+		i++;
+	}
+}
+
 int main() {
-	/*
-	Node* col1[4] = {{"P1", 60}, {"P2", 50}, {"P3", 45}, {"P4", 30}};
-	Node* col2[4] = {{"M1", 80}, {"M2", 20}, {"M3", 15}, {"M4", 60}, {"M5", 30}};
-	Node* col3[3] = {{"R1", 50}, {"R2", 40}, {"R3", 10}};
-	*/
+	Node* input1 = NULL;
+	Node* input2 = NULL;
+	Node* input3 = NULL;
+
 	Node* system_stack = NULL;
 	Node* process_stack = NULL;
 
-	process_stack = append_node(process_stack, "P0", 10);
-	process_stack = append_node(process_stack, "P1", 11);
-	process_stack = append_node(process_stack, "P2", 12);
-	process_stack = append_node(process_stack, "P3", 13);
-	process_stack = append_node(process_stack, "P4", 14);
+	FILE *input = NULL;
 
-	print_list(process_stack);
+	input = fopen("input1.txt", "r");
+	if(input == NULL)
+		return 1;
+
+	fill_inputX(input, input1);
+	fclose(input);
+
+	input = fopen("input2.txt", "r");
+	if(input == NULL)
+		return 1;
+
+	fill_inputX(input, input2);
+	fclose(input);
+	
+	input = fopen("input3.txt", "r");
+	if(input == NULL)
+		return 1;
+
+	fill_inputX(input, input3);
+	fclose(input);
+
+	print_list(input1);
+	print_list(input2);
+	print_list(input3);
 
 	return 0;
 }
