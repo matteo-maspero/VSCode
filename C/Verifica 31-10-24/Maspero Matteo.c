@@ -29,6 +29,7 @@ Node* addNode(Node* head, int value, int emergency);
 Node* insertNodeWhereGreater(Node* head, int value, int emergency);
 Node* popNode(Node* head, unsigned int position);
 void printList(Node* head);
+void exportToFile(Node* head);
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,7 +49,8 @@ int main() {
 			"\n4 | sposta i pazienti over 70 in testa;"
 			"\n5 | sposta i pazienti under 2 subito dopo gli anziani;"
 			"\n6 | stampa la lista dei pazienti in coda;"
-			"\n7 | genera un paziente casuale."
+			"\n7 | genera un paziente casuale;"
+			"\n8 | esporta in file."
 			"\nScelta: "
 		);
 		scanf("%d", &choice);
@@ -79,6 +81,9 @@ int main() {
 				break;
 			case 7:
 				queue = generateRandomPatient(queue);
+				break;
+			case 8:
+				exportToFile(queue);
 				break;
 			default:
 				printf("\nInvalid choice.\n");
@@ -265,4 +270,27 @@ void printList(Node* head) {
 
 		head = head->next;
 	}
+}
+
+void exportToFile(Node* head) {
+	FILE* dest = fopen("patients.txt", "w");
+
+	if(dest == NULL) {
+		printf("\nErrore nell'apertura del file.\n");
+		return;
+	}
+
+	printf("\nEsportazione dei pazienti...");
+
+	while(head != NULL) {
+		if(head->emergency)
+			fprintf(dest, "Paziente (Emergenza):");
+		else
+			fprintf(dest, "Paziente:");
+
+		fprintf(dest,"\n\tEta': %d\n\n", head->age);
+		head = head->next;
+	}
+
+	fclose(dest);
 }
