@@ -273,24 +273,28 @@ void printList(Node* head) {
 }
 
 void exportToFile(Node* head) {
-	FILE* dest = fopen("patients.txt", "w");
-
-	if(dest == NULL) {
-		printf("\nErrore nell'apertura del file.\n");
+	if(head == NULL) {
+		printf("\nNon ci sono pazienti in coda.");
 		return;
 	}
 
-	printf("\nEsportazione dei pazienti...");
+	FILE* dest = fopen("Print.txt", "w");
+
+	if(dest == NULL) {
+		printf("\nErrore nell'apertura del file.");
+		return;
+	}
 
 	while(head != NULL) {
 		if(head->emergency)
-			fprintf(dest, "Paziente (Emergenza):");
+			fprintf(dest, "\nPaziente (Emergenza):");
 		else
-			fprintf(dest, "Paziente:");
+			fprintf(dest, "\nPaziente:");
 
 		fprintf(dest,"\n\tEta': %d\n\n", head->age);
 		head = head->next;
 	}
 
+	printf("\nEsportazione eseguita correttamente.");
 	fclose(dest);
 }
