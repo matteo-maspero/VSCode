@@ -1,3 +1,8 @@
+/*
+	Ho riscritto parte del programma della verifica includendo solo le funzioni strettamente necessarie per una maggiore pulizia,
+	per avere un focus maggiore sulle richieste e per velocizzare la compilazione del programma.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
