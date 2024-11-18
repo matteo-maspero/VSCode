@@ -11,7 +11,8 @@
 //	TYPES & GLOBAL VALUES
 //	--	--	--	--	--	--	--	--	//
 
-#define BASE_PATH "C:/Users/Matteo/Desktop/"	//	Cambiare il percorso in base alla propria configurazione
+//	Cambiare il percorso in base alla propria configurazione
+#define BASE_PATH "C:/Users/Matteo/Desktop/"
 #define TXT_NAME BASE_PATH "patients.txt"
 #define DAT_NAME BASE_PATH "patients.dat"
 
