@@ -6,8 +6,8 @@
 //	TYPES & GLOBAL VALUES
 //	--	--	--	--	--	--	--	--	//
 
-#define TXT_NAME "patients.txt"
-#define DAT_NAME "patients.dat"
+#define TXT_NAME "C:/Users/Matteo/Desktop/patients.txt"
+#define DAT_NAME "C:/Users/Matteo/Desktop/patients.dat"
 
 typedef struct Patient{
 	int age;
@@ -31,10 +31,10 @@ Patient* addPatientToQueue(Patient* head, int age, int emergency);
 void printQueue(Patient* head);
 
 //	Files utils
-Patient* readPatientsFromTxt(Patient* head);
-void writePatientsToTxt(Patient* head);
-Patient* readPatientsFromDat(Patient* head);
-void writePatientsToDat(Patient* head);
+Patient* readQueueFromTxt(Patient* head);
+void writeQueueToTxt(Patient* head);
+Patient* readQueueFromDat(Patient* head);
+void writeQueueToDat(Patient* head);
 
 //	Main
 int main() {
@@ -63,9 +63,11 @@ void chooseOption(int* choice) {
 		"\n+--------------------------------------+"
 		"\n| 0. Termina il programma              |"
 		"\n| 1. Aggiungi un paziente in coda      |"
-		"\n| 2. Leggi la coda dal file di testo   |"
-		"\n| 3. Stampa la coda nel file di testo  |"
-		"\n| 4. Stampa la coda in console         |"
+		"\n| 2. Stampa la coda in console         |"
+		"\n| 3. Leggi la coda dal file di testo   |"
+		"\n| 4. Leggi la coda dal file binario    |"
+		"\n| 5. Stampa la coda nel file di testo  |"
+		"\n| 6. Stampa la coda nel file binario   |"
 		"\n+--------------------------------------+"
 		"\n\tScelta: "
 	);
@@ -91,23 +93,32 @@ Patient* performAction(Patient* head, int choice) {
 		break;
 
 		case 2:
-		head = readPatientsFromTxt(head);
-		printf("\nCoda dei pazienti aggiornata.");
-		break;
-
-		case 3:
-		writePatientsToTxt(head);
-		printf("\nCoda dei pazienti salvata.");
-		break;
-
-		case 4:
 		printf("\nCoda dei pazienti:");
 		printQueue(head);
 		break;
 
+		case 3:
+		head = readQueueFromTxt(head);
+		printf("\nCoda dei pazienti aggiornata.");
+		break;
+
+		case 4:
+		head = readQueueFromDat(head);
+		printf("\nCoda dei pazienti aggiornata.");
+		break;
+
+		case 5:
+		writeQueueToTxt(head);
+		printf("\nCoda dei pazienti salvata.");
+		break;
+
+		case 6:
+		writeQueueToDat(head);
+		printf("\nCoda dei pazienti salvata.");
+		break;
+
 		default:
 		printf("\nScelta non valida.");
-		break;
 	}
 
 	return head;
@@ -160,7 +171,7 @@ void printQueue(Patient* head) {
 }
 
 //	Files utils
-Patient* readPatientsFromTxt(Patient* head) {
+Patient* readQueueFromTxt(Patient* head) {
 	FILE* inputFile = fopen(TXT_NAME, "r");
 
 	if (inputFile == NULL)
@@ -176,7 +187,7 @@ Patient* readPatientsFromTxt(Patient* head) {
 	return head;
 }
 
-void writePatientsToTxt(Patient* head) {
+void writeQueueToTxt(Patient* head) {
 	if(head == NULL)
 		return;
 
@@ -187,6 +198,40 @@ void writePatientsToTxt(Patient* head) {
 
 	while (head != NULL) {
 		fprintf(outputFile, "%d\t%d\n", head->age, head->emergency);
+		head = head->next;
+	}
+
+	fclose(outputFile);
+}
+
+Patient* readQueueFromDat(Patient* head) {
+	FILE* inputFile = fopen(DAT_NAME, "rb");
+
+	if (inputFile == NULL)
+		exit(1);
+
+	int age;
+	int emergency;
+
+	while(fread(&age, sizeof(int), 1, inputFile) && fread(&emergency, sizeof(int), 1, inputFile))
+		head = addPatientToQueue(head, age, emergency);
+
+	fclose(inputFile);
+	return head;
+}
+
+void writeQueueToDat(Patient* head) {
+	if(head == NULL)
+		return;
+
+	FILE* outputFile = fopen(DAT_NAME, "wb");
+
+	if (outputFile == NULL)
+		exit(1);
+
+	while (head != NULL) {
+		fwrite(&head->age, sizeof(int), 1, outputFile);
+		fwrite(&head->emergency, sizeof(int), 1, outputFile);
 		head = head->next;
 	}
 
