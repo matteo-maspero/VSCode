@@ -11,7 +11,7 @@
 
 typedef struct Patient{
 	int age;
-	char emergency;
+	int emergency;
 	Patient *next;
 } Patient;
 
@@ -20,14 +20,14 @@ typedef struct Patient{
 //	--	--	--	--	--	--	--	--	//
 
 //	Utils
-void chooseOption(char* choice);
-Patient* performAction(Patient* head, char choice);
+void chooseOption(int* choice);
+Patient* performAction(Patient* head, int choice);
 
 //	Lists utils
-Patient* createPatient(int age, char emergency);
+Patient* createPatient(int age, int emergency);
 Patient* pushPatient(Patient* head, int age);
 Patient* appendPatient(Patient* head, int age);
-Patient* addPatientToQueue(Patient* head, int age, char emergency);
+Patient* addPatientToQueue(Patient* head, int age, int emergency);
 void printQueue(Patient* head);
 
 //	Files utils
@@ -39,7 +39,7 @@ void writePatientsToDat(Patient* head);
 //	Main
 int main() {
 	Patient* queue = NULL;
-	char choice;
+	int choice;
 
 	while(1) {
 		chooseOption(&choice);
@@ -56,7 +56,7 @@ int main() {
 }
 
 //	Utils
-void chooseOption(char* choice) {
+void chooseOption(int* choice) {
 	printf(
 		"\n+--------------------------------------+"
 		"\n| Segliere una delle seguenti opzioni  |"
@@ -73,21 +73,20 @@ void chooseOption(char* choice) {
 	scanf("%d", choice);
 }
 
-Patient* performAction(Patient* head, char choice) {
+Patient* performAction(Patient* head, int choice) {
 	switch(choice) {
 		case 1:
 		int age;
-		char emergency;
-
+		int emergency;
+		
 		printf(
 			"\nInserisci i seguenti dati del paziente:"
 			"\n\tEta': "
 		);
-		
 		scanf("%d", &age);
 		printf("\tEmergenza: [0/1] ");
-		scanf("\n%d", &emergency);
-		
+		scanf("%d", &emergency);
+
 		head = addPatientToQueue(head, age, emergency);
 		break;
 
@@ -105,7 +104,7 @@ Patient* performAction(Patient* head, char choice) {
 		printf("\nCoda dei pazienti:");
 		printQueue(head);
 		break;
-		
+
 		default:
 		printf("\nScelta non valida.");
 		break;
@@ -115,7 +114,7 @@ Patient* performAction(Patient* head, char choice) {
 }
 
 //	List utils
-Patient* createPatient(int age, char emergency) {
+Patient* createPatient(int age, int emergency) {
 	Patient* newPatient = (Patient*) malloc(sizeof(Patient));
 	newPatient->age = age;
 	newPatient->emergency = emergency;
@@ -142,7 +141,7 @@ Patient* appendPatient(Patient* head, int age) {
 	return head;
 }
 
-Patient* addPatientToQueue(Patient* head, int age, char emergency) {
+Patient* addPatientToQueue(Patient* head, int age, int emergency) {
 	if(emergency)
 		return pushPatient(head, age);
 	else
@@ -151,12 +150,11 @@ Patient* addPatientToQueue(Patient* head, int age, char emergency) {
 
 void printQueue(Patient* head) {
 	while (head != NULL) {
-		printf(
-			"\nDati del paziente:"
-			"\n\tEta': %d,"
-			"\n\tEmergency: %c",
-			head->age, head->emergency
-		);
+		printf("\n\tEta' paziente: %d", head->age);
+
+		if(head->emergency)
+			printf(" (Emergenza)");
+
 		head = head->next;
 	}
 }
@@ -169,9 +167,9 @@ Patient* readPatientsFromTxt(Patient* head) {
 		exit(1);
 
 	int age;
-	char emergency;
+	int emergency;
 
-	while(fscanf(inputFile, "%d\t%c", &age, &emergency) != EOF)
+	while(fscanf(inputFile, "%d\t%d", &age, &emergency) != EOF)
 		head = addPatientToQueue(head, age, emergency);
 	
 	fclose(inputFile);
@@ -188,7 +186,7 @@ void writePatientsToTxt(Patient* head) {
 		exit(1);
 
 	while (head != NULL) {
-		fprintf(outputFile, "%d\t%c\n", head->age, head->emergency);
+		fprintf(outputFile, "%d\t%d\n", head->age, head->emergency);
 		head = head->next;
 	}
 
