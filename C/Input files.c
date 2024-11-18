@@ -11,8 +11,9 @@
 //	TYPES & GLOBAL VALUES
 //	--	--	--	--	--	--	--	--	//
 
-#define TXT_NAME "C:/Users/Matteo/Desktop/patients.txt"
-#define DAT_NAME "C:/Users/Matteo/Desktop/patients.dat"
+#define BASE_PATH "C:/Users/Matteo/Desktop/"	//	Cambiare il percorso in base alla propria configurazione
+#define TXT_NAME BASE_PATH "patients.txt"
+#define DAT_NAME BASE_PATH "patients.dat"
 
 typedef struct Patient{
 	int age;
