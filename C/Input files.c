@@ -21,6 +21,7 @@ typedef struct Patient{
 
 //	Utils
 void chooseOption(char* choice);
+Patient* performAction(Patient* head, char choice);
 
 //	Lists utils
 Patient* createPatient(int age, char emergency);
@@ -47,36 +48,8 @@ int main() {
 			printf("\nChiusura in corso...");
 			break;
 		}
-		else if(choice == 1) {
-			int age;
-			char emergency;
 
-			printf(
-				"\nInserisci i seguenti dati del paziente:"
-				"\n\tEta': "
-			);
-			
-			scanf("%d", &age);
-			printf("\tEmergenza: [0/1] ");
-			scanf("\n%d", &emergency);
-			
-			queue = addPatientToQueue(queue, age, emergency);
-		}
-		else if(choice == 2) {
-			queue = readPatientsFromTxt(queue);
-			printf("\nCoda dei pazienti aggiornata.");
-		}
-		else if(choice == 3) {
-			writePatientsToTxt(queue);
-			printf("\nCoda dei pazienti salvata.");
-		}
-		else if(choice == 4) {
-			printf("\nCoda dei pazienti:");
-			printQueue(queue);
-		}
-		else {
-			printf("\nScelta non valida.");
-		}
+		queue = performAction(queue, choice);
 	}
 
 	return 0;
@@ -98,6 +71,47 @@ void chooseOption(char* choice) {
 	);
 
 	scanf("%d", choice);
+}
+
+Patient* performAction(Patient* head, char choice) {
+	switch(choice) {
+		case 1:
+		int age;
+		char emergency;
+
+		printf(
+			"\nInserisci i seguenti dati del paziente:"
+			"\n\tEta': "
+		);
+		
+		scanf("%d", &age);
+		printf("\tEmergenza: [0/1] ");
+		scanf("\n%d", &emergency);
+		
+		head = addPatientToQueue(head, age, emergency);
+		break;
+
+		case 2:
+		head = readPatientsFromTxt(head);
+		printf("\nCoda dei pazienti aggiornata.");
+		break;
+
+		case 3:
+		writePatientsToTxt(head);
+		printf("\nCoda dei pazienti salvata.");
+		break;
+
+		case 4:
+		printf("\nCoda dei pazienti:");
+		printQueue(head);
+		break;
+		
+		default:
+		printf("\nScelta non valida.");
+		break;
+	}
+
+	return head;
 }
 
 //	List utils
