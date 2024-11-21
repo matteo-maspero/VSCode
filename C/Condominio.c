@@ -73,18 +73,14 @@ Node insertNode(Node head, int floor, int number, int rooms, char *name, char *s
 	}
 
 	Node current = head->next;
-	//TODO
-	while(current != NULL) {
-		if(current->floor < floor)
-			if(current->number < number) {
-				Node dest = createNode(floor, number, rooms, name, surname);
-				dest->next = current->next;
-				current->next = dest;
-				return head;
-			}
+	
+	while(current->next != NULL)
+		if(current->next->floor < floor && current->next->number < number)
+			current = current->next;
 
-		current = current->next;
-	}
+	Node dest = createNode(floor, number, rooms, name, surname);
+	dest->next = current->next;
+	current->next = dest;
 
 	return head;
 }
