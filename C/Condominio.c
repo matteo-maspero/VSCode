@@ -88,15 +88,15 @@ Node insertNode(Node head, int floor, int number, int rooms, char *name, char *s
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 int readInt(const char* request) {
-	printf("%s", request);
 	int dest;
+	printf("%s", request);
 	scanf("%d", &dest);
 	return dest;
 }
 
 char* readString(const char* request) {
-	printf("%s", request);
 	char temp[32];
+	printf("%s", request);
 	scanf("%s", temp);
 	
 	char* dest = (char*) malloc(sizeof(char) * strlen(temp));
