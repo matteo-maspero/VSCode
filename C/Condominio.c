@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define INPUT_PATH "D:\\VSCode\\Workspace\\suites.txt"
+
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 typedef struct Installment {
@@ -17,8 +19,8 @@ typedef struct Suite {
 	int floor;
 	int number;
 	int rooms;
-	char *name;
-	char *surname;
+	char name[32];
+	char surname[32];
 	struct Suite *next;
 } Suite;
 
@@ -33,7 +35,8 @@ Node insertNode(Node head, int floor, int number, int rooms, char *name, char *s
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 int readInt(const char* request);
 char* readString(const char* request);
-Node readSuite(Node head);
+
+Node readSuites(Node head);
 
 void printSuite(Node head);
 void printAllSuites(Node head);
@@ -41,10 +44,7 @@ void printAllSuites(Node head);
 int main() {
 	Node head = NULL;
 
-	head = readSuite(head);
-	head = readSuite(head);
-	head = readSuite(head);
-	head = readSuite(head);
+	head = readSuites(head);
 
 	return 0;
 }
@@ -56,27 +56,27 @@ Node createNode(int floor, int number, int rooms, char *name, char *surname) {
 	dest->floor = floor;
 	dest->number = number;
 	dest->rooms = rooms;
-	dest->name = name;
-	dest->surname = surname;
 	dest->next = NULL;
+
+	strcpy(dest->name, name);
+	strcpy(dest->surname, surname);
 	return dest;
 }
 
 Node insertNode(Node head, int floor, int number, int rooms, char *name, char *surname) {
-	if(head == NULL)
+	if (head == NULL)
 		return createNode(floor, number, rooms, name, surname);
-	
-	if(head->floor > floor && head->number > number) {
+
+	if (head->floor > floor || (head->floor == floor && head->number > number)) {
 		Node dest = createNode(floor, number, rooms, name, surname);
 		dest->next = head;
 		return dest;
 	}
 
-	Node current = head->next;
-	
-	while(current->next != NULL)
-		if(current->next->floor < floor && current->next->number < number)
-			current = current->next;
+	Node current = head;
+
+	while (current->next != NULL && (current->next->floor < floor || (current->next->floor == floor && current->next->number < number)))
+		current = current->next;
 
 	Node dest = createNode(floor, number, rooms, name, surname);
 	dest->next = current->next;
@@ -104,16 +104,21 @@ char* readString(const char* request) {
 	return dest;
 }
 
-Node readSuite(Node head) {
-	int floor, number, rooms;
-	char* name,* surname;
+Node readSuites(Node head) {
+    FILE* inputFile = fopen(INPUT_PATH, "r");
 
-	printf("\nInserisci i dati della suite:");
-	floor = readInt("\n\tPiano: ");
-	number = readInt("\tId suite: ");
-	rooms = readInt("\tNumero di vani: ");
-	name = readString("\tNome proprietario: ");
-	surname = readString("\tCognome proprietario: ");
+    if (inputFile == NULL) {
+        perror("Error opening file.");
+        exit(1);
+    }
 
-	return insertNode(head, floor, number, rooms, name, surname);
+    int floor, number, rooms;
+    char name[32];
+    char surname[32];
+
+    while (fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
+        head = insertNode(head, floor, number, rooms, name, surname);
+
+    fclose(inputFile);
+    return head;
 }
