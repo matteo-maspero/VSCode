@@ -10,6 +10,9 @@ int main() {
 	cout << "\nInserisci una stringa: ";
 	getline(cin, str);
 
+	for(int i = 0; i < str.length(); i++)
+		str[i] = tolower(str[i]);
+
 	int vowels = getNumOfVowels(str);
 	cout << "\nIl numero di vocali presenti nella stringa e': " << vowels << "\nQuello di consonanti e': " << str.length() - vowels;
 

@@ -6,6 +6,14 @@
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+typedef unsigned char Bool;
+
+typedef struct {
+	int number;
+	int amount;
+	Bool paid;
+	char expiration[6];
+} Payment;
 
 typedef struct Suite {
 	int floor;
@@ -13,6 +21,9 @@ typedef struct Suite {
 	int rooms;
 	char name[32];
 	char surname[32];
+
+	Payment Payments[4];
+	int nPayments;
 	struct Suite *next;
 } Suite;
 
@@ -26,7 +37,8 @@ Node insertNode(Node head, int floor, int number, int rooms, char *name, char *s
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 int readInt(const char* request);
-char* readString(const char* request);
+char* readString(const char* format, const char* request);
+Payment readPayment();
 
 Node readSuites(Node head);
 
@@ -37,6 +49,8 @@ int main() {
 	Node head = NULL;
 
 	head = readSuites(head);
+
+	Payment da = readPayment();
 
 	return 0;
 }
@@ -49,6 +63,7 @@ Node createNode(int floor, int number, int rooms, char *name, char *surname) {
 	dest->number = number;
 	dest->rooms = rooms;
 	dest->next = NULL;
+	dest->nPayments = 0;
 
 	strcpy(dest->name, name);
 	strcpy(dest->surname, surname);
@@ -86,13 +101,26 @@ int readInt(const char* request) {
 	return dest;
 }
 
-char* readString(const char* request) {
+char* readString(const char* format, const char* request) {
 	char temp[32];
 	printf("%s", request);
-	scanf("%s", temp);
+	scanf(format, temp);
 	
 	char* dest = (char*) malloc(sizeof(char) * strlen(temp));
 	strcpy(dest, temp);
+	return dest;
+}
+
+Payment readPayment() {
+	Payment dest;
+	dest.number = readInt("Inserisci il numero della rata: ");
+	dest.amount = readInt("Inserisci l'importo della rata: ");
+	dest.paid = 0;
+
+	printf("Inserisci la data di scadenza della rata (gg/mm): ");
+	scanf("%s/%s", dest.expiration);
+	int day, month;
+	sscanf(dest.expiration, "%d/%d", &day, &month);
 	return dest;
 }
 
