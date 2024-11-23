@@ -3,6 +3,7 @@
 using namespace std;
 
 int getNumOfVowels(string s);
+int getNumOfConsonants(string s);
 
 int main() {
 	string str;
@@ -13,8 +14,7 @@ int main() {
 	for(int i = 0; i < str.length(); i++)
 		str[i] = tolower(str[i]);
 
-	int vowels = getNumOfVowels(str);
-	cout << "\nIl numero di vocali presenti nella stringa e': " << vowels << "\nQuello di consonanti e': " << str.length() - vowels;
+	cout << "\nIl numero di vocali presenti nella stringa e': " << getNumOfVowels(str) << "\nQuello di consonanti e': " << getNumOfConsonants(str);
 
 	return 0;
 }
@@ -27,4 +27,14 @@ int getNumOfVowels(string str) {
 			vowels ++;
 
 	return vowels;
+}
+
+int getNumOfConsonants(string str) {
+	int consonants = 0;
+
+	for(int i = 0; i < str.length(); i++)
+		if(str[i] != 'a' && str[i] != 'e' && str[i] != 'i' && str[i] != 'o' && str[i] != 'u' && str[i] != ' ')
+			consonants ++;
+
+	return consonants;
 }
