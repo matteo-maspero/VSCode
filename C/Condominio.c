@@ -2,18 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INPUT_PATH "D:\\VSCode\\Workspace\\suites.txt"
+#define INPUT_PATH "C:\\Users\\mat.maspero\\VSCode\\Workspace\\suites.txt"
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
-typedef struct Installment {
-	int value;
-	int paid;
-	int number;
-	int month;
-	int year;
-	struct Installment *next;
-} Installment;
 
 typedef struct Suite {
 	int floor;
@@ -64,10 +56,10 @@ Node createNode(int floor, int number, int rooms, char *name, char *surname) {
 }
 
 Node insertNode(Node head, int floor, int number, int rooms, char *name, char *surname) {
-	if (head == NULL)
+	if(head == NULL)
 		return createNode(floor, number, rooms, name, surname);
 
-	if (head->floor > floor || (head->floor == floor && head->number > number)) {
+	if(head->floor > floor || (head->floor == floor && head->number > number)) {
 		Node dest = createNode(floor, number, rooms, name, surname);
 		dest->next = head;
 		return dest;
@@ -75,7 +67,7 @@ Node insertNode(Node head, int floor, int number, int rooms, char *name, char *s
 
 	Node current = head;
 
-	while (current->next != NULL && (current->next->floor < floor || (current->next->floor == floor && current->next->number < number)))
+	while(current->next != NULL && (current->next->floor < floor || (current->next->floor == floor && current->next->number < number)))
 		current = current->next;
 
 	Node dest = createNode(floor, number, rooms, name, surname);
@@ -107,7 +99,7 @@ char* readString(const char* request) {
 Node readSuites(Node head) {
     FILE* inputFile = fopen(INPUT_PATH, "r");
 
-    if (inputFile == NULL) {
+    if(inputFile == NULL) {
         perror("Error opening file.");
         exit(1);
     }
@@ -116,7 +108,7 @@ Node readSuites(Node head) {
     char name[32];
     char surname[32];
 
-    while (fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
+    while(fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
         head = insertNode(head, floor, number, rooms, name, surname);
 
     fclose(inputFile);
