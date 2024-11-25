@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INPUT_PATH "C:\\Users\\mat.maspero\\VSCode\\Workspace\\suites.txt"
+#define INPUT_PATH "C:\\Users\\mat.masdasdpero\\VSCode\\Workspace\\suites.txt"
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
@@ -12,52 +12,163 @@ typedef struct {
 	int number;
 	int amount;
 	Bool paid;
-	char expiration[6];
+	char* expiration;
 } Payment;
 
 typedef struct Suite {
-	int floor;
 	int number;
+	int floor;
 	int rooms;
+	int nPayments;
+	
+	Payment Payments[4];
 	char name[32];
 	char surname[32];
-
-	Payment Payments[4];
-	int nPayments;
 	struct Suite *next;
 } Suite;
 
 typedef Suite* Node;
 
+//	MAIN FUNCTIONS
+//	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+void printMenu();
+
+void listSuites(Node head);
+Node loadSuites(Node head);
+void saveSuites(Node head);
+
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
-Node createNode(int floor, int number, int rooms, char *name, char *surname);
-Node insertNode(Node head, int floor, int number, int rooms, char *name, char *surname);
+Node createNode(int number, int floor, int rooms, char *name, char *surname);
+Node pushNode(Node head, int number, int floor, int rooms, char *name, char *surname);
+void freeList(Node head);
 
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 int readInt(const char* request);
 char* readString(const char* format, const char* request);
-Payment readPayment();
-
-Node readSuites(Node head);
-
-void printSuite(Node head);
-void printAllSuites(Node head);
 
 int main() {
 	Node head = NULL;
+	int choice;
 
-	head = readSuites(head);
+	while(1) {
+		printMenu();
+		choice = readInt("\nScegli l'operazione da eseguire: ");
 
-	Payment da = readPayment();
+		switch(choice) {
+			case 1:
+				char name[32];
+				char surname[32];
+
+				printf("\n\tInserisci i nome e cognome del proprietario: (nome cognome) ");
+				scanf("%s %s", name, surname);
+				
+				head = pushNode(
+					head,
+					readInt("\tInserisci il numero: "),
+					readInt("\tInserisci il piano: "),
+					readInt("\tInserisci il numero di stanze: "),
+					name,
+					surname
+				);
+
+				break;
+			case 2:
+				listSuites(head);
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				saveSuites(head);
+				break;
+			case 8:
+				freeList(head);
+				head = loadSuites(head);
+				break;
+			case 0:
+				exit(0);
+			default:
+				perror("Operazione non valida");
+		}
+	}
 
 	return 0;
 }
 
+//	MAIN FUNCTIONS
+//	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+void printMenu() {
+	printf(
+		"\nOperazioni disponibili:"
+		"\n\t1. Inserisci un nuovo appartamento"
+		"\n\t2. Visualizza la lista degli appartamenti"
+		"\n\t3. Inserisci le rate annuali dell'appartamento"
+		"\n\t4. Paga una rata annuale dell'appartamento"
+		"\n\t5. Visualizza le rate annuali dell'appartamento"
+		"\n\t6. Visualizza le rate annuali non pagate dell'appartamento"
+		"\n\t7. Salva le informazioni su file"
+		"\n\t8. Carica le informazioni da file"
+		"\n\t0. Esci"
+	);
+}
+
+void listSuites(Node head) {
+	while(head != NULL) {
+		printf(
+			"\n\tAppartamento %d, piano %d, %d stanze"
+			"\n\tProprietario: %s %s",
+			head->number,
+			head->floor,
+			head->rooms,
+			head->name,
+			head->surname
+		);
+
+		head = head->next;
+	}
+}
+
+Node loadSuites(Node head) {
+	FILE* inputFile = fopen(INPUT_PATH, "r");
+
+	if(inputFile == NULL)
+		perror("Apertura file fallita");
+
+	int floor, number, rooms;
+	char name[32];
+	char surname[32];
+
+	while(fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
+		head = pushNode(head, floor, number, rooms, name, surname);
+
+	fclose(inputFile);
+	return head;
+}
+
+void saveSuites(Node head) {
+	FILE* inputFile = fopen(INPUT_PATH, "w");
+
+	if(inputFile == NULL)
+		perror("Apertura file fallita");
+
+	while(head != NULL) {
+		fprintf(inputFile, "%d\t%d\t%d\t%s\t%s\n", head->floor, head->number, head->rooms, head->name, head->surname);
+		head = head->next;
+	}
+
+	fclose(inputFile);
+}
+
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
-Node createNode(int floor, int number, int rooms, char *name, char *surname) {
+Node createNode(int number, int floor, int rooms, char *name, char *surname) {
 	Node dest = (Node) malloc(sizeof(Suite));
 	dest->floor = floor;
 	dest->number = number;
@@ -70,75 +181,28 @@ Node createNode(int floor, int number, int rooms, char *name, char *surname) {
 	return dest;
 }
 
-Node insertNode(Node head, int floor, int number, int rooms, char *name, char *surname) {
-	if(head == NULL)
-		return createNode(floor, number, rooms, name, surname);
+Node pushNode(Node head, int number, int floor, int rooms, char *name, char *surname) {
+	Node newNode = createNode(number, floor, rooms, name, surname);
+	newNode->next = head;
+	return newNode;
+}
 
-	if(head->floor > floor || (head->floor == floor && head->number > number)) {
-		Node dest = createNode(floor, number, rooms, name, surname);
-		dest->next = head;
-		return dest;
+void freeList(Node head) {
+	Node toPop;
+
+	while(head != NULL) {
+		toPop = head;
+		head = head->next;
+		free(toPop);
 	}
-
-	Node current = head;
-
-	while(current->next != NULL && (current->next->floor < floor || (current->next->floor == floor && current->next->number < number)))
-		current = current->next;
-
-	Node dest = createNode(floor, number, rooms, name, surname);
-	dest->next = current->next;
-	current->next = dest;
-
-	return head;
 }
 
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+
 int readInt(const char* request) {
 	int dest;
-	printf("%s", request);
+	printf(request);
 	scanf("%d", &dest);
 	return dest;
-}
-
-char* readString(const char* format, const char* request) {
-	char temp[32];
-	printf("%s", request);
-	scanf(format, temp);
-	
-	char* dest = (char*) malloc(sizeof(char) * strlen(temp));
-	strcpy(dest, temp);
-	return dest;
-}
-
-Payment readPayment() {
-	Payment dest;
-	dest.number = readInt("Inserisci il numero della rata: ");
-	dest.amount = readInt("Inserisci l'importo della rata: ");
-	dest.paid = 0;
-
-	printf("Inserisci la data di scadenza della rata (gg/mm): ");
-	scanf("%s/%s", dest.expiration);
-	int day, month;
-	sscanf(dest.expiration, "%d/%d", &day, &month);
-	return dest;
-}
-
-Node readSuites(Node head) {
-    FILE* inputFile = fopen(INPUT_PATH, "r");
-
-    if(inputFile == NULL) {
-        perror("Error opening file.");
-        exit(1);
-    }
-
-    int floor, number, rooms;
-    char name[32];
-    char surname[32];
-
-    while(fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
-        head = insertNode(head, floor, number, rooms, name, surname);
-
-    fclose(inputFile);
-    return head;
 }
