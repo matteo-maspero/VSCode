@@ -2,29 +2,38 @@
 #include <string>
 using namespace std;
 
-int getNumOfVowels(string s);
+void conta_vocali_e_consonanti(string str, int* vocali, int* consonanti);
 
 int main() {
 	string str;
 
-	cout << "\nInserisci una stringa: ";
-	getline(cin, str);
+	cout << "\nInserire una stringa: (massimo 100 caratteri)";
+	do
+		getline(cin, str);
+	while(str.length() > 100);
+	
+	int vocali, consonanti;
+	conta_vocali_e_consonanti(str, &vocali, &consonanti);
 
-	for(int i = 0; i < str.length(); i++)
-		str[i] = tolower(str[i]);
-
-	int vowels = getNumOfVowels(str);
-	cout << "\nIl numero di vocali presenti nella stringa e': " << vowels << "\nQuello di consonanti e': " << str.length() - vowels;
+	cout << "\nVocali: " << vocali << "\nConsonanti: " << consonanti << endl;
 
 	return 0;
 }
 
-int getNumOfVowels(string str) {
-	int vowels = 0;
+void conta_vocali_e_consonanti(string str, int* vocali, int* consonanti) {
+	char current;
+	*vocali = 0;
+	*consonanti = 0;
 
-	for(int i = 0; i < str.length(); i++)
-		if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
-			vowels ++;
+	for(int i = 0; i < str.length(); i ++) {
+		current = tolower(str[i]);
 
-	return vowels;
+		if(current < 'a' || current > 'z')
+			continue;
+
+		if(current == 'a' || current == 'e' || current == 'i' || current == 'o' || current == 'u')
+			(*vocali) ++;
+		else
+			(*consonanti) ++;
+	}
 }
