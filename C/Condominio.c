@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INPUT_PATH "C:\\Users\\mat.masdasdpero\\VSCode\\Workspace\\suites.txt"
+#define INPUT_PATH "D:\\VSCode\\Workspace\\apartments.txt" //"C:\\Users\\mat.masdasdpero\\VSCode\\Workspace\\suites.txt"
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
@@ -11,71 +11,83 @@ typedef unsigned char Bool;
 typedef struct {
 	int number;
 	int amount;
-	Bool paid;
 	char* expiration;
+	Bool paid;
 } Payment;
 
-typedef struct Suite {
+typedef struct Apartment {
 	int number;
 	int floor;
 	int rooms;
-	int nPayments;
-	
-	Payment Payments[4];
-	char name[32];
-	char surname[32];
-	struct Suite *next;
-} Suite;
+	char* name;
+	char* surname;
+	Payment* Payments;
+	struct Apartment *next;
+} Apartment;
 
-typedef Suite* Node;
+typedef Apartment* Node;
 
 //	MAIN FUNCTIONS
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
-void printMenu();
 
-void listSuites(Node head);
-Node loadSuites(Node head);
-void saveSuites(Node head);
 
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+
+/*
+	@brief Initializes a new node with the given data
+	@param number Apartment number
+	@param floor Apartment floor
+	@param rooms Number of rooms in the apartment
+	@param name Owner's first name
+	@param surname Owner's last name
+	@return The created node
+*/
 Node createNode(int number, int floor, int rooms, char *name, char *surname);
+
+/*
+	@brief Inserts a new node at the head of the list
+	@param head Head of the list
+	@param number Apartment number
+	@param floor Apartment floor
+	@param rooms Number of rooms in the apartment
+	@param name Owner's first name
+	@param surname Owner's last name
+	@return The new head of the list
+*/
 Node pushNode(Node head, int number, int floor, int rooms, char *name, char *surname);
-void freeList(Node head);
+
+/*
+	@brief Deallocates the memory occupied by all nodes in the list
+	@param head Head of the list
+*/
+void destroyList(Node head);
 
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
-int readInt(const char* request);
-char* readString(const char* format, const char* request);
+
+/*
+	@brief Reads an integer from the standard input
+	@param request Message to display to the user
+	@param min Minimum value allowed
+	@param max Maximum value allowed (if lower than min, the check will be skipped)
+	@param retry Message to display if the input is invalid
+	@return The read integer
+*/
+int readInt(const char* request, int min, int max, const char* retry);
+
+//	FUNCTIONS
+//	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
 int main() {
 	Node head = NULL;
 	int choice;
 
 	while(1) {
-		printMenu();
-		choice = readInt("\nScegli l'operazione da eseguire: ");
-
 		switch(choice) {
 			case 1:
-				char name[32];
-				char surname[32];
-
-				printf("\n\tInserisci i nome e cognome del proprietario: (nome cognome) ");
-				scanf("%s %s", name, surname);
-				
-				head = pushNode(
-					head,
-					readInt("\tInserisci il numero: "),
-					readInt("\tInserisci il piano: "),
-					readInt("\tInserisci il numero di stanze: "),
-					name,
-					surname
-				);
-
 				break;
 			case 2:
-				listSuites(head);
 				break;
 			case 3:
 				break;
@@ -86,11 +98,9 @@ int main() {
 			case 6:
 				break;
 			case 7:
-				saveSuites(head);
 				break;
 			case 8:
 				freeList(head);
-				head = loadSuites(head);
 				break;
 			case 0:
 				exit(0);
@@ -104,6 +114,7 @@ int main() {
 
 //	MAIN FUNCTIONS
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+
 void printMenu() {
 	printf(
 		"\nOperazioni disponibili:"
@@ -119,65 +130,17 @@ void printMenu() {
 	);
 }
 
-void listSuites(Node head) {
-	while(head != NULL) {
-		printf(
-			"\n\tAppartamento %d, piano %d, %d stanze"
-			"\n\tProprietario: %s %s",
-			head->number,
-			head->floor,
-			head->rooms,
-			head->name,
-			head->surname
-		);
-
-		head = head->next;
-	}
-}
-
-Node loadSuites(Node head) {
-	FILE* inputFile = fopen(INPUT_PATH, "r");
-
-	if(inputFile == NULL)
-		perror("Apertura file fallita");
-
-	int floor, number, rooms;
-	char name[32];
-	char surname[32];
-
-	while(fscanf(inputFile, "%d\t%d\t%d\t%s\t%s", &floor, &number, &rooms, name, surname) != EOF)
-		head = pushNode(head, floor, number, rooms, name, surname);
-
-	fclose(inputFile);
-	return head;
-}
-
-void saveSuites(Node head) {
-	FILE* inputFile = fopen(INPUT_PATH, "w");
-
-	if(inputFile == NULL)
-		perror("Apertura file fallita");
-
-	while(head != NULL) {
-		fprintf(inputFile, "%d\t%d\t%d\t%s\t%s\n", head->floor, head->number, head->rooms, head->name, head->surname);
-		head = head->next;
-	}
-
-	fclose(inputFile);
-}
-
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+
 Node createNode(int number, int floor, int rooms, char *name, char *surname) {
-	Node dest = (Node) malloc(sizeof(Suite));
+	Node dest = (Node) malloc(sizeof(Apartment));
 	dest->floor = floor;
 	dest->number = number;
 	dest->rooms = rooms;
+	dest->name = name;
+	dest->surname = surname;
 	dest->next = NULL;
-	dest->nPayments = 0;
-
-	strcpy(dest->name, name);
-	strcpy(dest->surname, surname);
 	return dest;
 }
 
@@ -187,7 +150,7 @@ Node pushNode(Node head, int number, int floor, int rooms, char *name, char *sur
 	return newNode;
 }
 
-void freeList(Node head) {
+void destroyList(Node head) {
 	Node toPop;
 
 	while(head != NULL) {
@@ -200,9 +163,18 @@ void freeList(Node head) {
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
-int readInt(const char* request) {
+int readInt(const char* request, int min, int max, const char* retry) {
 	int dest;
 	printf(request);
-	scanf("%d", &dest);
+
+	while(1) {
+		scanf("%d", &dest);
+
+		if(min > max || dest > min && dest < max)
+			break;
+
+		printf(retry);
+	}
+
 	return dest;
 }
