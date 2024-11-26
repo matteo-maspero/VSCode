@@ -6,8 +6,19 @@
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+
+/*
+	@brief Pseudo-boolean type. Should only be used to store 0/1.
+*/
 typedef unsigned char Bool;
 
+/*
+	@brief Payment information for an apartment.
+	@param number Payment number
+	@param amount Payment amount
+	@param expiration Payment expiration date
+	@param paid True if the payment has been made, false otherwise
+*/
 typedef struct {
 	int number;
 	int amount;
@@ -15,6 +26,16 @@ typedef struct {
 	Bool paid;
 } Payment;
 
+/*
+	@brief Apartment information.
+	@param number Apartment number
+	@param floor Apartment floor
+	@param rooms Number of rooms in the apartment
+	@param name Owner's first name
+	@param surname Owner's last name
+	@param Payments List of payments for the apartment
+	@param next Next apartment in the list
+*/
 typedef struct Apartment {
 	int number;
 	int floor;
@@ -25,17 +46,24 @@ typedef struct Apartment {
 	struct Apartment *next;
 } Apartment;
 
+/*
+	@brief Generic reference type for a node in a list.
+*/
 typedef Apartment* Node;
 
-//	MAIN FUNCTIONS
+//	GENERAL FUNCTIONS
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
+/*
+	@brief Clears the console and displays the main menu.
+*/
+void clearConsoleAndPrintMenu();
 
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
 /*
-	@brief Initializes a new node with the given data
+	@brief Initializes a new node with the given data.
 	@param number Apartment number
 	@param floor Apartment floor
 	@param rooms Number of rooms in the apartment
@@ -46,7 +74,7 @@ typedef Apartment* Node;
 Node createNode(int number, int floor, int rooms, char *name, char *surname);
 
 /*
-	@brief Inserts a new node at the head of the list
+	@brief Inserts a new node at the head of the list.
 	@param head Head of the list
 	@param number Apartment number
 	@param floor Apartment floor
@@ -58,7 +86,7 @@ Node createNode(int number, int floor, int rooms, char *name, char *surname);
 Node pushNode(Node head, int number, int floor, int rooms, char *name, char *surname);
 
 /*
-	@brief Deallocates the memory occupied by all nodes in the list
+	@brief Deallocates the memory occupied by all nodes in the list.
 	@param head Head of the list
 */
 void destroyList(Node head);
@@ -67,7 +95,7 @@ void destroyList(Node head);
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
 /*
-	@brief Reads an integer from the standard input
+	@brief Reads an integer from the standard input. Can be constrained to a range, extremes included.
 	@param request Message to display to the user
 	@param min Minimum value allowed
 	@param max Maximum value allowed (if lower than min, the check will be skipped)
@@ -76,48 +104,35 @@ void destroyList(Node head);
 */
 int readInt(const char* request, int min, int max, const char* retry);
 
-//	FUNCTIONS
+//	GENERAL FUNCTIONS
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
 int main() {
 	Node head = NULL;
-	int choice;
+	int operationToPerform;
 
 	while(1) {
-		switch(choice) {
-			case 1:
-				break;
-			case 2:
-				break;
-			case 3:
-				break;
-			case 4:
-				break;
-			case 5:
-				break;
-			case 6:
-				break;
-			case 7:
-				break;
-			case 8:
-				freeList(head);
-				break;
+		clearConsoleAndPrintMenu();
+		operationToPerform = readInt("\nScegli un'operazione da eseguire: ", 0, 8, "Operazione non valida. Riprova: ");
+
+		switch(operationToPerform) {
 			case 0:
-				exit(0);
+				printf("\nArrivederci!");
+				return 0;
 			default:
-				perror("Operazione non valida");
+				perror("Should not happen at all.");
 		}
 	}
 
 	return 0;
 }
 
-//	MAIN FUNCTIONS
-//	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
+void clearConsoleAndPrintMenu() {
+	//system("cls");	//	Bugged on VSCode
+	printf("\033[H\033[J");	//	Clears the console
 
-void printMenu() {
 	printf(
-		"\nOperazioni disponibili:"
+		"Operazioni disponibili:"
 		"\n\t1. Inserisci un nuovo appartamento"
 		"\n\t2. Visualizza la lista degli appartamenti"
 		"\n\t3. Inserisci le rate annuali dell'appartamento"
@@ -170,7 +185,7 @@ int readInt(const char* request, int min, int max, const char* retry) {
 	while(1) {
 		scanf("%d", &dest);
 
-		if(min > max || dest > min && dest < max)
+		if(min > max || dest >= min && dest <= max)
 			break;
 
 		printf(retry);
