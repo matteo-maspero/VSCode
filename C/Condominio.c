@@ -7,12 +7,12 @@
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
-/*
+/**
 	@brief Pseudo-boolean type. Should only be used to store 0/1.
 */
 typedef unsigned char Bool;
 
-/*
+/**
 	@brief Payment information for an apartment.
 	@param number Payment number
 	@param amount Payment amount
@@ -26,7 +26,7 @@ typedef struct {
 	Bool paid;
 } Payment;
 
-/*
+/**
 	@brief Apartment information.
 	@param number Apartment number
 	@param floor Apartment floor
@@ -46,7 +46,7 @@ typedef struct Apartment {
 	struct Apartment *next;
 } Apartment;
 
-/*
+/**
 	@brief Generic reference type for a node in a list.
 */
 typedef Apartment* Node;
@@ -54,7 +54,7 @@ typedef Apartment* Node;
 //	GENERAL FUNCTIONS
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
-/*
+/**
 	@brief Clears the console and displays the main menu.
 */
 void clearConsoleAndPrintMenu();
@@ -62,7 +62,7 @@ void clearConsoleAndPrintMenu();
 //	LISTS HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
-/*
+/**
 	@brief Initializes a new node with the given data.
 	@param number Apartment number
 	@param floor Apartment floor
@@ -73,7 +73,7 @@ void clearConsoleAndPrintMenu();
 */
 Node createNode(int number, int floor, int rooms, char *name, char *surname);
 
-/*
+/**
 	@brief Inserts a new node at the head of the list.
 	@param head Head of the list
 	@param number Apartment number
@@ -85,7 +85,7 @@ Node createNode(int number, int floor, int rooms, char *name, char *surname);
 */
 Node pushNode(Node head, int number, int floor, int rooms, char *name, char *surname);
 
-/*
+/**
 	@brief Deallocates the memory occupied by all nodes in the list.
 	@param head Head of the list
 */
@@ -94,7 +94,7 @@ void destroyList(Node head);
 //	I/O HANDLING
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
 
-/*
+/**
 	@brief Reads an integer from the standard input. Can be constrained to a range, extremes included.
 	@param request Message to display to the user
 	@param min Minimum value allowed
