@@ -13,7 +13,7 @@ int main() {
     //  che abbia tutti i bit a 0 tranne il suo k-esimo (che vale 1). Bisogna poi
     //  shiftare il risultato di k posizioni a destra per ottenere il valore desiderato.
     printf(
-        "Il numero %d in binario e': %d%d%d%d%d%d%d%d",
+        "Il numero in binario e': %d%d%d%d%d%d%d%d",
         (x & 0b10000000) >> 7,
         (x & 0b1000000) >> 6,
         (x & 0b100000) >> 5,
