@@ -1,0 +1,1544 @@
+Abbadia Cerreto;LO;LOM
+Abbadia Lariana;LC;LOM
+Abbiategrasso;MI;LOM
+Acquafredda;BS;LOM
+Acquanegra Cremonese;CR;LOM
+Acquanegra sul Chiese;MN;LOM
+Adrara San Martino;BG;LOM
+Adrara San Rocco;BG;LOM
+Adro;BS;LOM
+Agnadello;CR;LOM
+Agnosine;BS;LOM
+Agra;VA;LOM
+Agrate Brianza;MB;LOM
+Aicurzio;MB;LOM
+Airuno;LC;LOM
+Alagna;PV;LOM
+Albairate;MI;LOM
+Albano Sant'Alessandro;BG;LOM
+Albaredo Arnaboldi;PV;LOM
+Albaredo per San Marco;SO;LOM
+Albavilla;CO;LOM
+Albese con Cassano;CO;LOM
+Albiate;MB;LOM
+Albino;BG;LOM
+Albiolo;CO;LOM
+Albizzate;VA;LOM
+Albonese;PV;LOM
+Albosaggia;SO;LOM
+Albuzzano;PV;LOM
+Alfianello;BS;LOM
+Algua;BG;LOM
+Almč;BG;LOM
+Almenno San Bartolomeo;BG;LOM
+Almenno San Salvatore;BG;LOM
+Alserio;CO;LOM
+Alzano Lombardo;BG;LOM
+Alzate Brianza;CO;LOM
+Ambivere;BG;LOM
+Andalo Valtellino;SO;LOM
+Anfo;BS;LOM
+Angera;VA;LOM
+Angolo Terme;BS;LOM
+Annicco;CR;LOM
+Annone di Brianza;LC;LOM
+Antegnate;BG;LOM
+Anzano del Parco;CO;LOM
+Appiano Gentile;CO;LOM
+Aprica;SO;LOM
+Arcene;BG;LOM
+Arcisate;VA;LOM
+Arconate;MI;LOM
+Arcore;MB;LOM
+Ardenno;SO;LOM
+Ardesio;BG;LOM
+Arena Po;PV;LOM
+Arese;MI;LOM
+Argegno;CO;LOM
+Arluno;MI;LOM
+Arosio;CO;LOM
+Arsago Seprio;VA;LOM
+Artogne;BS;LOM
+Arzago d'Adda;BG;LOM
+Asola;MN;LOM
+Assago;MI;LOM
+Asso;CO;LOM
+Averara;BG;LOM
+Aviatico;BG;LOM
+Azzanello;CR;LOM
+Azzano Mella;BS;LOM
+Azzano San Paolo;BG;LOM
+Azzate;VA;LOM
+Azzio;VA;LOM
+Azzone;BG;LOM
+Badia Pavese;PV;LOM
+Bagnaria;PV;LOM
+Bagnatica;BG;LOM
+Bagnolo Cremasco;CR;LOM
+Bagnolo Mella;BS;LOM
+Bagnolo San Vito;MN;LOM
+Bagolino;BS;LOM
+Ballabio;LC;LOM
+Baranzate;MI;LOM
+Barasso;VA;LOM
+Barbariga;BS;LOM
+Barbata;BG;LOM
+Barbianello;PV;LOM
+Bardello;VA;LOM
+Bareggio;MI;LOM
+Barghe;BS;LOM
+Bariano;BG;LOM
+Barlassina;MB;LOM
+Barni;CO;LOM
+Barzago;LC;LOM
+Barzana;BG;LOM
+Barzanō;LC;LOM
+Barzio;LC;LOM
+Bascapč;PV;LOM
+Basiano;MI;LOM
+Basiglio;MI;LOM
+Bassano Bresciano;BS;LOM
+Bastida de' Dossi;PV;LOM
+Bastida Pancarana;PV;LOM
+Battuda;PV;LOM
+Bedero Valcuvia;VA;LOM
+Bedizzole;BS;LOM
+Bedulita;BG;LOM
+Belgioioso;PV;LOM
+Bellagio;CO;LOM
+Bellano;LC;LOM
+Bellinzago Lombardo;MI;LOM
+Bellusco;MB;LOM
+Bema;SO;LOM
+Bene Lario;CO;LOM
+Berbenno;BG;LOM
+Berbenno di Valtellina;SO;LOM
+Beregazzo con Figliaro;CO;LOM
+Bereguardo;PV;LOM
+Bergamo;BG;LOM
+Berlingo;BS;LOM
+Bernareggio;MB;LOM
+Bernate Ticino;MI;LOM
+Bertonico;LO;LOM
+Berzo Demo;BS;LOM
+Berzo Inferiore;BS;LOM
+Berzo San Fermo;BG;LOM
+Besana in Brianza;MB;LOM
+Besano;VA;LOM
+Besate;MI;LOM
+Besnate;VA;LOM
+Besozzo;VA;LOM
+Biandronno;VA;LOM
+Bianzano;BG;LOM
+Bianzone;SO;LOM
+Biassono;MB;LOM
+Bienno;BS;LOM
+Bigarello;MN;LOM
+Binago;CO;LOM
+Binasco;MI;LOM
+Bione;BS;LOM
+Bisuschio;VA;LOM
+Bizzarone;CO;LOM
+Blello;BG;LOM
+Blessagno;CO;LOM
+Blevio;CO;LOM
+Bodio Lomnago;VA;LOM
+Boffalora d'Adda;LO;LOM
+Boffalora Sopra Ticino;MI;LOM
+Bolgare;BG;LOM
+Bollate;MI;LOM
+Boltiere;BG;LOM
+Bonate Sopra;BG;LOM
+Bonate Sotto;BG;LOM
+Bonemerse;CR;LOM
+Bordolano;CR;LOM
+Borgarello;PV;LOM
+Borghetto Lodigiano;LO;LOM
+Borgo di Terzo;BG;LOM
+Borgo Priolo;PV;LOM
+Borgo San Giacomo;BS;LOM
+Borgo San Giovanni;LO;LOM
+Borgo San Siro;PV;LOM
+Borgoforte;MN;LOM
+Borgofranco sul Po;MN;LOM
+Borgoratto Mormorolo;PV;LOM
+Borgosatollo;BS;LOM
+Bormio;SO;LOM
+Bornasco;PV;LOM
+Borno;BS;LOM
+Bosisio Parini;LC;LOM
+Bosnasco;PV;LOM
+Bossico;BG;LOM
+Bottanuco;BG;LOM
+Botticino;BS;LOM
+Bovegno;BS;LOM
+Bovezzo;BS;LOM
+Bovisio-Masciago;MB;LOM
+Bozzolo;MN;LOM
+Bracca;BG;LOM
+Brallo di Pregola;PV;LOM
+Brandico;BS;LOM
+Branzi;BG;LOM
+Braone;BS;LOM
+Brebbia;VA;LOM
+Bregano;VA;LOM
+Bregnano;CO;LOM
+Brembate;BG;LOM
+Brembate di Sopra;BG;LOM
+Brembilla;BG;LOM
+Brembio;LO;LOM
+Breme;PV;LOM
+Brenna;CO;LOM
+Breno;BS;LOM
+Brenta;VA;LOM
+Brescia;BS;LOM
+Bressana Bottarone;PV;LOM
+Bresso;MI;LOM
+Brezzo di Bedero;VA;LOM
+Brienno;CO;LOM
+Brignano Gera d'Adda;BG;LOM
+Brinzio;VA;LOM
+Brione;BS;LOM
+Briosco;MB;LOM
+Brissago-Valtravaglia;VA;LOM
+Brivio;LC;LOM
+Broni;PV;LOM
+Brugherio;MB;LOM
+Brumano;BG;LOM
+Brunate;CO;LOM
+Brunello;VA;LOM
+Brusaporto;BG;LOM
+Brusimpiano;VA;LOM
+Bubbiano;MI;LOM
+Buccinasco;MI;LOM
+Buglio in Monte;SO;LOM
+Buguggiate;VA;LOM
+Bulciago;LC;LOM
+Bulgarograsso;CO;LOM
+Burago di Molgora;MB;LOM
+Buscate;MI;LOM
+Busnago;MB;LOM
+Bussero;MI;LOM
+Busto Arsizio;VA;LOM
+Busto Garolfo;MI;LOM
+Ca' d'Andrea;CR;LOM
+Cabiate;CO;LOM
+Cadegliano-Viconago;VA;LOM
+Cadorago;CO;LOM
+Cadrezzate;VA;LOM
+Caglio;CO;LOM
+Cagno;CO;LOM
+Caino;BS;LOM
+Caiolo;SO;LOM
+Cairate;VA;LOM
+Calcinate;BG;LOM
+Calcinato;BS;LOM
+Calcio;BG;LOM
+Calco;LC;LOM
+Calolziocorte;LC;LOM
+Calusco d'Adda;BG;LOM
+Calvagese della Riviera;BS;LOM
+Calvatone;CR;LOM
+Calvenzano;BG;LOM
+Calvignano;PV;LOM
+Calvignasco;MI;LOM
+Calvisano;BS;LOM
+Camairago;LO;LOM
+Cambiago;MI;LOM
+Camerata Cornello;BG;LOM
+Camisano;CR;LOM
+Campagnola Cremasca;CR;LOM
+Camparada;MB;LOM
+Campione d'Italia;CO;LOM
+Campodolcino;SO;LOM
+Campospinoso;PV;LOM
+Candia Lomellina;PV;LOM
+Canegrate;MI;LOM
+Canevino;PV;LOM
+Canneto Pavese;PV;LOM
+Canneto sull'Oglio;MN;LOM
+Canonica d'Adda;BG;LOM
+Cantello;VA;LOM
+Cantų;CO;LOM
+Canzo;CO;LOM
+Capergnanica;CR;LOM
+Capiago Intimiano;CO;LOM
+Capizzone;BG;LOM
+Capo di Ponte;BS;LOM
+Caponago;MB;LOM
+Capovalle;BS;LOM
+Cappella Cantone;CR;LOM
+Cappella de' Picenardi;CR;LOM
+Capralba;CR;LOM
+Capriano del Colle;BS;LOM
+Capriate San Gervasio;BG;LOM
+Caprino Bergamasco;BG;LOM
+Capriolo;BS;LOM
+Carate Brianza;MB;LOM
+Carate Urio;CO;LOM
+Caravaggio;BG;LOM
+Caravate;VA;LOM
+Carbonara al Ticino;PV;LOM
+Carbonara di Po;MN;LOM
+Carbonate;CO;LOM
+Cardano al Campo;VA;LOM
+Carenno;LC;LOM
+Carimate;CO;LOM
+Carlazzo;CO;LOM
+Carnago;VA;LOM
+Carnate;MB;LOM
+Carobbio degli Angeli;BG;LOM
+Carona;BG;LOM
+Caronno Pertusella;VA;LOM
+Caronno Varesino;VA;LOM
+Carpenedolo;BS;LOM
+Carpiano;MI;LOM
+Carugate;MI;LOM
+Carugo;CO;LOM
+Carvico;BG;LOM
+Casalbuttano ed Uniti;CR;LOM
+Casale Cremasco-Vidolasco;CR;LOM
+Casale Litta;VA;LOM
+Casaletto Ceredano;CR;LOM
+Casaletto di Sopra;CR;LOM
+Casaletto Lodigiano;LO;LOM
+Casaletto Vaprio;CR;LOM
+Casalmaggiore;CR;LOM
+Casalmaiocco;LO;LOM
+Casalmorano;CR;LOM
+Casalmoro;MN;LOM
+Casaloldo;MN;LOM
+Casalpusterlengo;LO;LOM
+Casalromano;MN;LOM
+Casalzuigno;VA;LOM
+Casanova Lonati;PV;LOM
+Casargo;LC;LOM
+Casarile;MI;LOM
+Casasco d'Intelvi;CO;LOM
+Casatenovo;LC;LOM
+Casatisma;PV;LOM
+Casazza;BG;LOM
+Casciago;VA;LOM
+Casei Gerola;PV;LOM
+Caselle Landi;LO;LOM
+Caselle Lurani;LO;LOM
+Casirate d'Adda;BG;LOM
+Caslino d'Erba;CO;LOM
+Casnate con Bernate;CO;LOM
+Casnigo;BG;LOM
+Casorate Primo;PV;LOM
+Casorate Sempione;VA;LOM
+Casorezzo;MI;LOM
+Caspoggio;SO;LOM
+Cassago Brianza;LC;LOM
+Cassano d'Adda;MI;LOM
+Cassano Magnago;VA;LOM
+Cassano Valcuvia;VA;LOM
+Cassiglio;BG;LOM
+Cassina de' Pecchi;MI;LOM
+Cassina Rizzardi;CO;LOM
+Cassina Valsassina;LC;LOM
+Cassinetta di Lugagnano;MI;LOM
+Cassolnovo;PV;LOM
+Castana;PV;LOM
+Castano Primo;MI;LOM
+Casteggio;PV;LOM
+Castegnato;BS;LOM
+Castel d'Ario;MN;LOM
+Castel Gabbiano;CR;LOM
+Castel Goffredo;MN;LOM
+Castel Mella;BS;LOM
+Castel Rozzone;BG;LOM
+Castelbelforte;MN;LOM
+Castelcovati;BS;LOM
+Casteldidone;CR;LOM
+Castellanza;VA;LOM
+Castelleone;CR;LOM
+Castelletto di Branduzzo;PV;LOM
+Castelli Calepio;BG;LOM
+Castello Cabiaglio;VA;LOM
+Castello d'Agogna;PV;LOM
+Castello dell'Acqua;SO;LOM
+Castello di Brianza;LC;LOM
+Castellucchio;MN;LOM
+Castelmarte;CO;LOM
+Castelnovetto;PV;LOM
+Castelnuovo Bocca d'Adda;LO;LOM
+Castelnuovo Bozzente;CO;LOM
+Castelseprio;VA;LOM
+Castelveccana;VA;LOM
+Castelverde;CR;LOM
+Castelvisconti;CR;LOM
+Castenedolo;BS;LOM
+Castiglione d'Adda;LO;LOM
+Castiglione delle Stiviere;MN;LOM
+Castiglione d'Intelvi;CO;LOM
+Castiglione Olona;VA;LOM
+Castione Andevenno;SO;LOM
+Castione della Presolana;BG;LOM
+Castiraga Vidardo;LO;LOM
+Casto;BS;LOM
+Castrezzato;BS;LOM
+Castro;BG;LOM
+Castronno;VA;LOM
+Cava Manara;PV;LOM
+Cavacurta;LO;LOM
+Cavallasca;CO;LOM
+Cavargna;CO;LOM
+Cavaria con Premezzo;VA;LOM
+Cavenago d'Adda;LO;LOM
+Cavenago di Brianza;MB;LOM
+Cavernago;BG;LOM
+Cavriana;MN;LOM
+Cazzago Brabbia;VA;LOM
+Cazzago San Martino;BS;LOM
+Cazzano Sant'Andrea;BG;LOM
+Cecima;PV;LOM
+Cedegolo;BS;LOM
+Cedrasco;SO;LOM
+Cella Dati;CR;LOM
+Cellatica;BS;LOM
+Cenate Sopra;BG;LOM
+Cenate Sotto;BG;LOM
+Cene;BG;LOM
+Cerano d'Intelvi;CO;LOM
+Ceranova;PV;LOM
+Cercino;SO;LOM
+Ceresara;MN;LOM
+Cerete;BG;LOM
+Ceretto Lomellina;PV;LOM
+Cergnago;PV;LOM
+Ceriano Laghetto;MB;LOM
+Cermenate;CO;LOM
+Cernobbio;CO;LOM
+Cernusco Lombardone;LC;LOM
+Cernusco sul Naviglio;MI;LOM
+Cerro al Lambro;MI;LOM
+Cerro Maggiore;MI;LOM
+Certosa di Pavia;PV;LOM
+Cerveno;BS;LOM
+Cervesina;PV;LOM
+Cervignano d'Adda;LO;LOM
+Cesana Brianza;LC;LOM
+Cesano Boscone;MI;LOM
+Cesano Maderno;MB;LOM
+Cesate;MI;LOM
+Ceto;BS;LOM
+Cevo;BS;LOM
+Chiari;BS;LOM
+Chiavenna;SO;LOM
+Chiesa in Valmalenco;SO;LOM
+Chieve;CR;LOM
+Chignolo d'Isola;BG;LOM
+Chignolo Po;PV;LOM
+Chiuduno;BG;LOM
+Chiuro;SO;LOM
+Cicognolo;CR;LOM
+Cigognola;PV;LOM
+Cigole;BS;LOM
+Cilavegna;PV;LOM
+Cimbergo;BS;LOM
+Cingia de' Botti;CR;LOM
+Cinisello Balsamo;MI;LOM
+Cino;SO;LOM
+Cirimido;CO;LOM
+Cisano Bergamasco;BG;LOM
+Ciserano;BG;LOM
+Cislago;VA;LOM
+Cisliano;MI;LOM
+Cittiglio;VA;LOM
+Civate;LC;LOM
+Civenna;CO;LOM
+Cividate al Piano;BG;LOM
+Cividate Camuno;BS;LOM
+Civo;SO;LOM
+Claino con Osteno;CO;LOM
+Clivio;VA;LOM
+Clusone;BG;LOM
+Coccaglio;BS;LOM
+Cocquio-Trevisago;VA;LOM
+Codevilla;PV;LOM
+Codogno;LO;LOM
+Cogliate;MB;LOM
+Colere;BG;LOM
+Colico;LC;LOM
+Colle Brianza;LC;LOM
+Collebeato;BS;LOM
+Collio;BS;LOM
+Cologne;BS;LOM
+Cologno al Serio;BG;LOM
+Cologno Monzese;MI;LOM
+Colonno;CO;LOM
+Colorina;SO;LOM
+Colturano;MI;LOM
+Colzate;BG;LOM
+Comabbio;VA;LOM
+Comazzo;LO;LOM
+Comerio;VA;LOM
+Comezzano-Cizzago;BS;LOM
+Commessaggio;MN;LOM
+Como;CO;LOM
+Comun Nuovo;BG;LOM
+Concesio;BS;LOM
+Concorezzo;MB;LOM
+Confienza;PV;LOM
+Copiano;PV;LOM
+Corana;PV;LOM
+Corbetta;MI;LOM
+Cormano;MI;LOM
+Corna Imagna;BG;LOM
+Cornalba;BG;LOM
+Cornale;PV;LOM
+Cornaredo;MI;LOM
+Cornate d'Adda;MB;LOM
+Cornegliano Laudense;LO;LOM
+Corno Giovine;LO;LOM
+Cornovecchio;LO;LOM
+Correzzana;MB;LOM
+Corrido;CO;LOM
+Corsico;MI;LOM
+Corte de' Cortesi con Cignone;CR;LOM
+Corte de' Frati;CR;LOM
+Corte Franca;BS;LOM
+Corte Palasio;LO;LOM
+Corteno Golgi;BS;LOM
+Cortenova;LC;LOM
+Cortenuova;BG;LOM
+Corteolona;PV;LOM
+Corvino San Quirico;PV;LOM
+Corzano;BS;LOM
+Cosio Valtellino;SO;LOM
+Costa de' Nobili;PV;LOM
+Costa di Mezzate;BG;LOM
+Costa Masnaga;LC;LOM
+Costa Serina;BG;LOM
+Costa Valle Imagna;BG;LOM
+Costa Volpino;BG;LOM
+Covo;BG;LOM
+Cozzo;PV;LOM
+Crandola Valsassina;LC;LOM
+Credaro;BG;LOM
+Credera Rubbiano;CR;LOM
+Crema;CR;LOM
+Cremella;LC;LOM
+Cremenaga;VA;LOM
+Cremeno;LC;LOM
+Cremia;CO;LOM
+Cremona;CR;LOM
+Cremosano;CR;LOM
+Crespiatica;LO;LOM
+Crosio della Valle;VA;LOM
+Crotta d'Adda;CR;LOM
+Cuasso al Monte;VA;LOM
+Cucciago;CO;LOM
+Cuggiono;MI;LOM
+Cugliate-Fabiasco;VA;LOM
+Cumignano sul Naviglio;CR;LOM
+Cunardo;VA;LOM
+Cura Carpignano;PV;LOM
+Curiglia con Monteviasco;VA;LOM
+Curno;BG;LOM
+Curtatone;MN;LOM
+Cusago;MI;LOM
+Cusano Milanino;MI;LOM
+Cusino;CO;LOM
+Cusio;BG;LOM
+Cuveglio;VA;LOM
+Cuvio;VA;LOM
+Dairago;MI;LOM
+Dalmine;BG;LOM
+Darfo Boario Terme;BS;LOM
+Daverio;VA;LOM
+Dazio;SO;LOM
+Delebio;SO;LOM
+Dello;BS;LOM
+Derovere;CR;LOM
+Dervio;LC;LOM
+Desenzano del Garda;BS;LOM
+Desio;MB;LOM
+Dizzasco;CO;LOM
+Dolzago;LC;LOM
+Domaso;CO;LOM
+Dongo;CO;LOM
+Dorio;LC;LOM
+Dorno;PV;LOM
+Dosolo;MN;LOM
+Dossena;BG;LOM
+Dosso del Liro;CO;LOM
+Dovera;CR;LOM
+Dresano;MI;LOM
+Drezzo;CO;LOM
+Drizzona;CR;LOM
+Dubino;SO;LOM
+Dumenza;VA;LOM
+Duno;VA;LOM
+Edolo;BS;LOM
+Ello;LC;LOM
+Endine Gaiano;BG;LOM
+Entratico;BG;LOM
+Erba;CO;LOM
+Erbusco;BS;LOM
+Erve;LC;LOM
+Esine;BS;LOM
+Esino Lario;LC;LOM
+Eupilio;CO;LOM
+Faedo Valtellino;SO;LOM
+Faggeto Lario;CO;LOM
+Fagnano Olona;VA;LOM
+Faloppio;CO;LOM
+Fara Gera d'Adda;BG;LOM
+Fara Olivana con Sola;BG;LOM
+Felonica;MN;LOM
+Fenegrō;CO;LOM
+Ferno;VA;LOM
+Ferrera di Varese;VA;LOM
+Ferrera Erbognone;PV;LOM
+Fiesco;CR;LOM
+Fiesse;BS;LOM
+Figino Serenza;CO;LOM
+Filago;BG;LOM
+Filighera;PV;LOM
+Fino del Monte;BG;LOM
+Fino Mornasco;CO;LOM
+Fiorano al Serio;BG;LOM
+Flero;BS;LOM
+Fombio;LO;LOM
+Fontanella;BG;LOM
+Fonteno;BG;LOM
+Foppolo;BG;LOM
+Forcola;SO;LOM
+Foresto Sparso;BG;LOM
+Formigara;CR;LOM
+Fornovo San Giovanni;BG;LOM
+Fortunago;PV;LOM
+Frascarolo;PV;LOM
+Fuipiano Valle Imagna;BG;LOM
+Fusine;SO;LOM
+Gabbioneta-Binanuova;CR;LOM
+Gadesco-Pieve Delmona;CR;LOM
+Gaggiano;MI;LOM
+Galbiate;LC;LOM
+Galgagnano;LO;LOM
+Gallarate;VA;LOM
+Galliate Lombardo;VA;LOM
+Galliavola;PV;LOM
+Gambara;BS;LOM
+Gambarana;PV;LOM
+Gambolō;PV;LOM
+Gandellino;BG;LOM
+Gandino;BG;LOM
+Gandosso;BG;LOM
+Garbagnate Milanese;MI;LOM
+Garbagnate Monastero;LC;LOM
+Gardone Riviera;BS;LOM
+Gardone Val Trompia;BS;LOM
+Gargnano;BS;LOM
+Garlasco;PV;LOM
+Garlate;LC;LOM
+Garzeno;CO;LOM
+Gavardo;BS;LOM
+Gaverina Terme;BG;LOM
+Gavirate;VA;LOM
+Gazoldo degli Ippoliti;MN;LOM
+Gazzada Schianno;VA;LOM
+Gazzaniga;BG;LOM
+Gazzuolo;MN;LOM
+Gemonio;VA;LOM
+Genivolta;CR;LOM
+Genzone;PV;LOM
+Gera Lario;CO;LOM
+Gerenzago;PV;LOM
+Gerenzano;VA;LOM
+Germignaga;VA;LOM
+Gerola Alta;SO;LOM
+Gerosa;BG;LOM
+Gerre de' Caprioli;CR;LOM
+Gessate;MI;LOM
+Ghedi;BS;LOM
+Ghisalba;BG;LOM
+Gianico;BS;LOM
+Gironico;CO;LOM
+Giussago;PV;LOM
+Giussano;MB;LOM
+Godiasco;PV;LOM
+Goito;MN;LOM
+Golasecca;VA;LOM
+Golferenzo;PV;LOM
+Gombito;CR;LOM
+Gonzaga;MN;LOM
+Gordona;SO;LOM
+Gorgonzola;MI;LOM
+Gorla Maggiore;VA;LOM
+Gorla Minore;VA;LOM
+Gorlago;BG;LOM
+Gorle;BG;LOM
+Gornate-Olona;VA;LOM
+Gorno;BG;LOM
+Gottolengo;BS;LOM
+Graffignana;LO;LOM
+Grandate;CO;LOM
+Grandola ed Uniti;CO;LOM
+Grantola;VA;LOM
+Grassobbio;BG;LOM
+Gravedona ed Uniti;CO;LOM
+Gravellona Lomellina;PV;LOM
+Grezzago;MI;LOM
+Griante;CO;LOM
+Gromo;BG;LOM
+Grone;BG;LOM
+Grontardo;CR;LOM
+Gropello Cairoli;PV;LOM
+Grosio;SO;LOM
+Grosotto;SO;LOM
+Grumello Cremonese ed Uniti;CR;LOM
+Grumello del Monte;BG;LOM
+Guanzate;CO;LOM
+Guardamiglio;LO;LOM
+Gudo Visconti;MI;LOM
+Guidizzolo;MN;LOM
+Gussago;BS;LOM
+Gussola;CR;LOM
+Idro;BS;LOM
+Imbersago;LC;LOM
+Inarzo;VA;LOM
+Incudine;BS;LOM
+Induno Olona;VA;LOM
+Introbio;LC;LOM
+Introzzo;LC;LOM
+Inverigo;CO;LOM
+Inverno e Monteleone;PV;LOM
+Inveruno;MI;LOM
+Inzago;MI;LOM
+Irma;BS;LOM
+Iseo;BS;LOM
+Isola di Fondra;BG;LOM
+Isola Dovarese;CR;LOM
+Isorella;BS;LOM
+Ispra;VA;LOM
+Isso;BG;LOM
+Izano;CR;LOM
+Jerago con Orago;VA;LOM
+Lacchiarella;MI;LOM
+Laglio;CO;LOM
+Lainate;MI;LOM
+Laino;CO;LOM
+Lallio;BG;LOM
+Lambrugo;CO;LOM
+Landriano;PV;LOM
+Langosco;PV;LOM
+Lanzada;SO;LOM
+Lanzo d'Intelvi;CO;LOM
+Lardirago;PV;LOM
+Lasnigo;CO;LOM
+Lavena Ponte Tresa;VA;LOM
+Laveno-Mombello;VA;LOM
+Lavenone;BS;LOM
+Lazzate;MB;LOM
+Lecco;LC;LOM
+Leffe;BG;LOM
+Leggiuno;VA;LOM
+Legnano;MI;LOM
+Lenna;BG;LOM
+Lenno;CO;LOM
+Leno;BS;LOM
+Lentate sul Seveso;MB;LOM
+Lesmo;MB;LOM
+Levate;BG;LOM
+Lezzeno;CO;LOM
+Lierna;LC;LOM
+Limbiate;MB;LOM
+Limido Comasco;CO;LOM
+Limone sul Garda;BS;LOM
+Linarolo;PV;LOM
+Lipomo;CO;LOM
+Lirio;PV;LOM
+Liscate;MI;LOM
+Lissone;MB;LOM
+Livigno;SO;LOM
+Livo;CO;LOM
+Livraga;LO;LOM
+Locate di Triulzi;MI;LOM
+Locate Varesino;CO;LOM
+Locatello;BG;LOM
+Lodi;LO;LOM
+Lodi Vecchio;LO;LOM
+Lodrino;BS;LOM
+Lograto;BS;LOM
+Lomagna;LC;LOM
+Lomazzo;CO;LOM
+Lomello;PV;LOM
+Lonate Ceppino;VA;LOM
+Lonate Pozzolo;VA;LOM
+Lonato del Garda;BS;LOM
+Longhena;BS;LOM
+Longone al Segrino;CO;LOM
+Losine;BS;LOM
+Lovere;BG;LOM
+Lovero;SO;LOM
+Lozio;BS;LOM
+Lozza;VA;LOM
+Luino;VA;LOM
+Luisago;CO;LOM
+Lumezzane;BS;LOM
+Lungavilla;PV;LOM
+Lurago d'Erba;CO;LOM
+Lurago Marinone;CO;LOM
+Lurano;BG;LOM
+Lurate Caccivio;CO;LOM
+Luvinate;VA;LOM
+Luzzana;BG;LOM
+Maccagno;VA;LOM
+Maccastorna;LO;LOM
+Macherio;MB;LOM
+Maclodio;BS;LOM
+Madesimo;SO;LOM
+Madignano;CR;LOM
+Madone;BG;LOM
+Magasa;BS;LOM
+Magenta;MI;LOM
+Magherno;PV;LOM
+Magnacavallo;MN;LOM
+Magnago;MI;LOM
+Magreglio;CO;LOM
+Mairago;LO;LOM
+Mairano;BS;LOM
+Malagnino;CR;LOM
+Malegno;BS;LOM
+Maleo;LO;LOM
+Malgesso;VA;LOM
+Malgrate;LC;LOM
+Malnate;VA;LOM
+Malonno;BS;LOM
+Mandello del Lario;LC;LOM
+Manerba del Garda;BS;LOM
+Manerbio;BS;LOM
+Mantello;SO;LOM
+Mantova;MN;LOM
+Mapello;BG;LOM
+Marcallo con Casone;MI;LOM
+Marcaria;MN;LOM
+Marcheno;BS;LOM
+Marchirolo;VA;LOM
+Marcignago;PV;LOM
+Margno;LC;LOM
+Mariana Mantovana;MN;LOM
+Mariano Comense;CO;LOM
+Marmentino;BS;LOM
+Marmirolo;MN;LOM
+Marnate;VA;LOM
+Marone;BS;LOM
+Martignana di Po;CR;LOM
+Martinengo;BG;LOM
+Marudo;LO;LOM
+Marzano;PV;LOM
+Marzio;VA;LOM
+Masate;MI;LOM
+Masciago Primo;VA;LOM
+Maslianico;CO;LOM
+Massalengo;LO;LOM
+Mazzano;BS;LOM
+Mazzo di Valtellina;SO;LOM
+Meda;MB;LOM
+Mede;PV;LOM
+Mediglia;MI;LOM
+Medolago;BG;LOM
+Medole;MN;LOM
+Melegnano;MI;LOM
+Meleti;LO;LOM
+Mello;SO;LOM
+Melzo;MI;LOM
+Menaggio;CO;LOM
+Menarola;SO;LOM
+Menconico;PV;LOM
+Merate;LC;LOM
+Mercallo;VA;LOM
+Merlino;LO;LOM
+Merone;CO;LOM
+Mese;SO;LOM
+Mesenzana;VA;LOM
+Mesero;MI;LOM
+Mezzago;MB;LOM
+Mezzana Bigli;PV;LOM
+Mezzana Rabattone;PV;LOM
+Mezzanino;PV;LOM
+Mezzegra;CO;LOM
+Mezzoldo;BG;LOM
+Milano;MI;LOM
+Milzano;BS;LOM
+Miradolo Terme;PV;LOM
+Misano di Gera d'Adda;BG;LOM
+Misinto;MB;LOM
+Missaglia;LC;LOM
+Moggio;LC;LOM
+Moglia;MN;LOM
+Moio de' Calvi;BG;LOM
+Molteno;LC;LOM
+Moltrasio;CO;LOM
+Monasterolo del Castello;BG;LOM
+Monguzzo;CO;LOM
+Moniga del Garda;BS;LOM
+Monno;BS;LOM
+Montagna in Valtellina;SO;LOM
+Montalto Pavese;PV;LOM
+Montanaso Lombardo;LO;LOM
+Montano Lucino;CO;LOM
+Monte Cremasco;CR;LOM
+Monte Isola;BS;LOM
+Monte Marenzo;LC;LOM
+Montebello della Battaglia;PV;LOM
+Montecalvo Versiggia;PV;LOM
+Montegrino Valtravaglia;VA;LOM
+Montello;BG;LOM
+Montemezzo;CO;LOM
+Montescano;PV;LOM
+Montesegale;PV;LOM
+Montevecchia;LC;LOM
+Monticelli Brusati;BS;LOM
+Monticelli Pavese;PV;LOM
+Monticello Brianza;LC;LOM
+Montichiari;BS;LOM
+Montirone;BS;LOM
+Montodine;CR;LOM
+Montorfano;CO;LOM
+Montų Beccaria;PV;LOM
+Monvalle;VA;LOM
+Monza;MB;LOM
+Monzambano;MN;LOM
+Morazzone;VA;LOM
+Morbegno;SO;LOM
+Morengo;BG;LOM
+Morimondo;MI;LOM
+Mornago;VA;LOM
+Mornico al Serio;BG;LOM
+Mornico Losana;PV;LOM
+Mortara;PV;LOM
+Morterone;LC;LOM
+Moscazzano;CR;LOM
+Motta Baluffi;CR;LOM
+Motta Visconti;MI;LOM
+Motteggiana;MN;LOM
+Mozzanica;BG;LOM
+Mozzate;CO;LOM
+Mozzo;BG;LOM
+Muggiō;MB;LOM
+Mulazzano;LO;LOM
+Mura;BS;LOM
+Muscoline;BS;LOM
+Musso;CO;LOM
+Nave;BS;LOM
+Nembro;BG;LOM
+Nerviano;MI;LOM
+Nesso;CO;LOM
+Niardo;BS;LOM
+Nibionno;LC;LOM
+Nicorvo;PV;LOM
+Nosate;MI;LOM
+Nova Milanese;MB;LOM
+Novate Mezzola;SO;LOM
+Novate Milanese;MI;LOM
+Novedrate;CO;LOM
+Noviglio;MI;LOM
+Nuvolento;BS;LOM
+Nuvolera;BS;LOM
+Odolo;BS;LOM
+Offanengo;CR;LOM
+Offlaga;BS;LOM
+Oggiona con Santo Stefano;VA;LOM
+Oggiono;LC;LOM
+Olevano di Lomellina;PV;LOM
+Olgiate Comasco;CO;LOM
+Olgiate Molgora;LC;LOM
+Olgiate Olona;VA;LOM
+Olginate;LC;LOM
+Oliva Gessi;PV;LOM
+Oliveto Lario;LC;LOM
+Olmeneta;CR;LOM
+Olmo al Brembo;BG;LOM
+Oltre il Colle;BG;LOM
+Oltressenda Alta;BG;LOM
+Oltrona di San Mamette;CO;LOM
+Ome;BS;LOM
+Oneta;BG;LOM
+Ono San Pietro;BS;LOM
+Onore;BG;LOM
+Opera;MI;LOM
+Origgio;VA;LOM
+Orino;VA;LOM
+Orio al Serio;BG;LOM
+Orio Litta;LO;LOM
+Ornago;MB;LOM
+Ornica;BG;LOM
+Orsenigo;CO;LOM
+Orzinuovi;BS;LOM
+Orzivecchi;BS;LOM
+Osio Sopra;BG;LOM
+Osio Sotto;BG;LOM
+Osmate;VA;LOM
+Osnago;LC;LOM
+Ospedaletto Lodigiano;LO;LOM
+Ospitaletto;BS;LOM
+Ossago Lodigiano;LO;LOM
+Ossimo;BS;LOM
+Ossona;MI;LOM
+Ossuccio;CO;LOM
+Ostiano;CR;LOM
+Ostiglia;MN;LOM
+Ottobiano;PV;LOM
+Ozzero;MI;LOM
+Padenghe sul Garda;BS;LOM
+Paderno d'Adda;LC;LOM
+Paderno Dugnano;MI;LOM
+Paderno Franciacorta;BS;LOM
+Paderno Ponchielli;CR;LOM
+Pagazzano;BG;LOM
+Pagnona;LC;LOM
+Paisco Loveno;BS;LOM
+Paitone;BS;LOM
+Paladina;BG;LOM
+Palazzago;BG;LOM
+Palazzo Pignano;CR;LOM
+Palazzolo sull'Oglio;BS;LOM
+Palestro;PV;LOM
+Palosco;BG;LOM
+Pancarana;PV;LOM
+Pandino;CR;LOM
+Pantigliate;MI;LOM
+Parabiago;MI;LOM
+Paratico;BS;LOM
+Parč;CO;LOM
+Parlasco;LC;LOM
+Parona;PV;LOM
+Parre;BG;LOM
+Parzanica;BG;LOM
+Paspardo;BS;LOM
+Passirano;BS;LOM
+Pasturo;LC;LOM
+Paullo;MI;LOM
+Pavia;PV;LOM
+Pavone del Mella;BS;LOM
+Pedesina;SO;LOM
+Pedrengo;BG;LOM
+Peglio;CO;LOM
+Pegognaga;MN;LOM
+Peia;BG;LOM
+Pellio Intelvi;CO;LOM
+Perego;LC;LOM
+Perledo;LC;LOM
+Pero;MI;LOM
+Persico Dosimo;CR;LOM
+Pertica Alta;BS;LOM
+Pertica Bassa;BS;LOM
+Pescarolo ed Uniti;CR;LOM
+Pescate;LC;LOM
+Peschiera Borromeo;MI;LOM
+Pessano con Bornago;MI;LOM
+Pessina Cremonese;CR;LOM
+Pezzaze;BS;LOM
+Piadena;CR;LOM
+Pian Camuno;BS;LOM
+Piancogno;BS;LOM
+Pianello del Lario;CO;LOM
+Pianengo;CR;LOM
+Pianico;BG;LOM
+Piantedo;SO;LOM
+Piario;BG;LOM
+Piateda;SO;LOM
+Piazza Brembana;BG;LOM
+Piazzatorre;BG;LOM
+Piazzolo;BG;LOM
+Pieranica;CR;LOM
+Pietra de' Giorgi;PV;LOM
+Pieve Albignola;PV;LOM
+Pieve del Cairo;PV;LOM
+Pieve di Coriano;MN;LOM
+Pieve d'Olmi;CR;LOM
+Pieve Emanuele;MI;LOM
+Pieve Fissiraga;LO;LOM
+Pieve Porto Morone;PV;LOM
+Pieve San Giacomo;CR;LOM
+Pigra;CO;LOM
+Pinarolo Po;PV;LOM
+Pino sulla Sponda del Lago Maggiore;VA;LOM
+Pioltello;MI;LOM
+Pisogne;BS;LOM
+Piubega;MN;LOM
+Piuro;SO;LOM
+Pizzale;PV;LOM
+Pizzighettone;CR;LOM
+Plesio;CO;LOM
+Poggio Rusco;MN;LOM
+Poggiridenti;SO;LOM
+Pogliano Milanese;MI;LOM
+Pognana Lario;CO;LOM
+Pognano;BG;LOM
+Polaveno;BS;LOM
+Polpenazze del Garda;BS;LOM
+Pompiano;BS;LOM
+Pomponesco;MN;LOM
+Poncarale;BS;LOM
+Ponna;CO;LOM
+Ponte di Legno;BS;LOM
+Ponte in Valtellina;SO;LOM
+Ponte Lambro;CO;LOM
+Ponte Nizza;PV;LOM
+Ponte Nossa;BG;LOM
+Ponte San Pietro;BG;LOM
+Ponteranica;BG;LOM
+Pontevico;BS;LOM
+Ponti sul Mincio;MN;LOM
+Pontida;BG;LOM
+Pontirolo Nuovo;BG;LOM
+Pontoglio;BS;LOM
+Porlezza;CO;LOM
+Portalbera;PV;LOM
+Porto Ceresio;VA;LOM
+Porto Mantovano;MN;LOM
+Porto Valtravaglia;VA;LOM
+Postalesio;SO;LOM
+Pozzaglio ed Uniti;CR;LOM
+Pozzo d'Adda;MI;LOM
+Pozzolengo;BS;LOM
+Pozzuolo Martesana;MI;LOM
+Pradalunga;BG;LOM
+Pralboino;BS;LOM
+Prata Camportaccio;SO;LOM
+Predore;BG;LOM
+Pregnana Milanese;MI;LOM
+Premana;LC;LOM
+Premolo;BG;LOM
+Preseglie;BS;LOM
+Presezzo;BG;LOM
+Prestine;BS;LOM
+Prevalle;BS;LOM
+Primaluna;LC;LOM
+Proserpio;CO;LOM
+Provaglio d'Iseo;BS;LOM
+Provaglio Val Sabbia;BS;LOM
+Puegnago sul Garda;BS;LOM
+Pumenengo;BG;LOM
+Pusiano;CO;LOM
+Quingentole;MN;LOM
+Quintano;CR;LOM
+Quinzano d'Oglio;BS;LOM
+Quistello;MN;LOM
+Ramponio Verna;CO;LOM
+Rancio Valcuvia;VA;LOM
+Ranco;VA;LOM
+Ranica;BG;LOM
+Ranzanico;BG;LOM
+Rasura;SO;LOM
+Rea;PV;LOM
+Redavalle;PV;LOM
+Redondesco;MN;LOM
+Remedello;BS;LOM
+Renate;MB;LOM
+Rescaldina;MI;LOM
+Retorbido;PV;LOM
+Revere;MN;LOM
+Rezzago;CO;LOM
+Rezzato;BS;LOM
+Rho;MI;LOM
+Ricengo;CR;LOM
+Ripalta Arpina;CR;LOM
+Ripalta Cremasca;CR;LOM
+Ripalta Guerina;CR;LOM
+Riva di Solto;BG;LOM
+Rivanazzano Terme;PV;LOM
+Rivarolo del Re ed Uniti;CR;LOM
+Rivarolo Mantovano;MN;LOM
+Rivolta d'Adda;CR;LOM
+Robbiate;LC;LOM
+Robbio;PV;LOM
+Robecchetto con Induno;MI;LOM
+Robecco d'Oglio;CR;LOM
+Robecco Pavese;PV;LOM
+Robecco sul Naviglio;MI;LOM
+Rocca de' Giorgi;PV;LOM
+Rocca Susella;PV;LOM
+Roccafranca;BS;LOM
+Rodano;MI;LOM
+Rodengo Saiano;BS;LOM
+Rodero;CO;LOM
+Rodigo;MN;LOM
+Roč Volciano;BS;LOM
+Rogeno;LC;LOM
+Rognano;PV;LOM
+Rogno;BG;LOM
+Rogolo;SO;LOM
+Romagnese;PV;LOM
+Romanengo;CR;LOM
+Romano di Lombardia;BG;LOM
+Ronago;CO;LOM
+Roncadelle;BS;LOM
+Roncaro;PV;LOM
+Roncello;MB;LOM
+Ronco Briantino;MB;LOM
+Roncobello;BG;LOM
+Roncoferraro;MN;LOM
+Roncola;BG;LOM
+Rosasco;PV;LOM
+Rosate;MI;LOM
+Rota d'Imagna;BG;LOM
+Rovagnate;LC;LOM
+Rovato;BS;LOM
+Rovellasca;CO;LOM
+Rovello Porro;CO;LOM
+Roverbella;MN;LOM
+Rovescala;PV;LOM
+Rovetta;BG;LOM
+Rozzano;MI;LOM
+Rudiano;BS;LOM
+Ruino;PV;LOM
+Sabbio Chiese;BS;LOM
+Sabbioneta;MN;LOM
+Sala Comacina;CO;LOM
+Sale Marasino;BS;LOM
+Salerano sul Lambro;LO;LOM
+Salō;BS;LOM
+Saltrio;VA;LOM
+Salvirola;CR;LOM
+Samarate;VA;LOM
+Samolaco;SO;LOM
+San Bartolomeo Val Cavargna;CO;LOM
+San Bassano;CR;LOM
+San Benedetto Po;MN;LOM
+San Cipriano Po;PV;LOM
+San Colombano al Lambro;MI;LOM
+San Damiano al Colle;PV;LOM
+San Daniele Po;CR;LOM
+San Donato Milanese;MI;LOM
+San Fedele Intelvi;CO;LOM
+San Felice del Benaco;BS;LOM
+San Fermo della Battaglia;CO;LOM
+San Fiorano;LO;LOM
+San Genesio ed Uniti;PV;LOM
+San Gervasio Bresciano;BS;LOM
+San Giacomo delle Segnate;MN;LOM
+San Giacomo Filippo;SO;LOM
+San Giorgio di Lomellina;PV;LOM
+San Giorgio di Mantova;MN;LOM
+San Giorgio su Legnano;MI;LOM
+San Giovanni Bianco;BG;LOM
+San Giovanni del Dosso;MN;LOM
+San Giovanni in Croce;CR;LOM
+San Giuliano Milanese;MI;LOM
+San Martino dall'Argine;MN;LOM
+San Martino del Lago;CR;LOM
+San Martino in Strada;LO;LOM
+San Martino Siccomario;PV;LOM
+San Nazzaro Val Cavargna;CO;LOM
+San Paolo;BS;LOM
+San Paolo d'Argon;BG;LOM
+San Pellegrino Terme;BG;LOM
+San Rocco al Porto;LO;LOM
+San Siro;CO;LOM
+San Vittore Olona;MI;LOM
+San Zeno Naviglio;BS;LOM
+San Zenone al Lambro;MI;LOM
+San Zenone al Po;PV;LOM
+Sangiano;VA;LOM
+Sannazzaro de' Burgondi;PV;LOM
+Santa Brigida;BG;LOM
+Santa Cristina e Bissone;PV;LOM
+Santa Giuletta;PV;LOM
+Santa Margherita di Staffora;PV;LOM
+Santa Maria della Versa;PV;LOM
+Santa Maria Hoč;LC;LOM
+Sant'Alessio con Vialone;PV;LOM
+Sant'Angelo Lodigiano;LO;LOM
+Sant'Angelo Lomellina;PV;LOM
+Santo Stefano Lodigiano;LO;LOM
+Santo Stefano Ticino;MI;LOM
+Sant'Omobono Terme;BG;LOM
+Sarezzo;BS;LOM
+Sarnico;BG;LOM
+Saronno;VA;LOM
+Sartirana Lomellina;PV;LOM
+Saviore dell'Adamello;BS;LOM
+Scaldasole;PV;LOM
+Scandolara Ravara;CR;LOM
+Scandolara Ripa d'Oglio;CR;LOM
+Scanzorosciate;BG;LOM
+Schignano;CO;LOM
+Schilpario;BG;LOM
+Schivenoglia;MN;LOM
+Secugnago;LO;LOM
+Sedriano;MI;LOM
+Sedrina;BG;LOM
+Segrate;MI;LOM
+Sellero;BS;LOM
+Selvino;BG;LOM
+Semiana;PV;LOM
+Senago;MI;LOM
+Seniga;BS;LOM
+Senna Comasco;CO;LOM
+Senna Lodigiana;LO;LOM
+Seregno;MB;LOM
+Sergnano;CR;LOM
+Seriate;BG;LOM
+Serina;BG;LOM
+Serle;BS;LOM
+Sermide;MN;LOM
+Sernio;SO;LOM
+Serravalle a Po;MN;LOM
+Sesto Calende;VA;LOM
+Sesto ed Uniti;CR;LOM
+Sesto San Giovanni;MI;LOM
+Settala;MI;LOM
+Settimo Milanese;MI;LOM
+Seveso;MB;LOM
+Silvano Pietra;PV;LOM
+Sirmione;BS;LOM
+Sirone;LC;LOM
+Sirtori;LC;LOM
+Siziano;PV;LOM
+Soiano del Lago;BS;LOM
+Solaro;MI;LOM
+Solarolo Rainerio;CR;LOM
+Solbiate;CO;LOM
+Solbiate Arno;VA;LOM
+Solbiate Olona;VA;LOM
+Solferino;MN;LOM
+Solto Collina;BG;LOM
+Solza;BG;LOM
+Somaglia;LO;LOM
+Somma Lombardo;VA;LOM
+Sommo;PV;LOM
+Soncino;CR;LOM
+Sondalo;SO;LOM
+Sondrio;SO;LOM
+Songavazzo;BG;LOM
+Sonico;BS;LOM
+Sordio;LO;LOM
+Soresina;CR;LOM
+Sorico;CO;LOM
+Sorisole;BG;LOM
+Sormano;CO;LOM
+Sospiro;CR;LOM
+Sotto il Monte Giovanni XXIII;BG;LOM
+Sovere;BG;LOM
+Sovico;MB;LOM
+Spessa;PV;LOM
+Spinadesco;CR;LOM
+Spineda;CR;LOM
+Spino d'Adda;CR;LOM
+Spinone al Lago;BG;LOM
+Spirano;BG;LOM
+Spriana;SO;LOM
+Stagno Lombardo;CR;LOM
+Stazzona;CO;LOM
+Stezzano;BG;LOM
+Stradella;PV;LOM
+Strozza;BG;LOM
+Suardi;PV;LOM
+Sueglio;LC;LOM
+Suello;LC;LOM
+Suisio;BG;LOM
+Sulbiate;MB;LOM
+Sulzano;BS;LOM
+Sumirago;VA;LOM
+Sustinente;MN;LOM
+Suzzara;MN;LOM
+Taceno;LC;LOM
+Taino;VA;LOM
+Talamona;SO;LOM
+Taleggio;BG;LOM
+Tartano;SO;LOM
+Tavazzano con Villavesco;LO;LOM
+Tavernerio;CO;LOM
+Tavernola Bergamasca;BG;LOM
+Tavernole sul Mella;BS;LOM
+Teglio;SO;LOM
+Telgate;BG;LOM
+Temų;BS;LOM
+Ternate;VA;LOM
+Terno d'Isola;BG;LOM
+Terranova dei Passerini;LO;LOM
+Ticengo;CR;LOM
+Tignale;BS;LOM
+Tirano;SO;LOM
+Torbole Casaglia;BS;LOM
+Torlino Vimercati;CR;LOM
+Tornata;CR;LOM
+Torno;CO;LOM
+Torrazza Coste;PV;LOM
+Torre Beretti e Castellaro;PV;LOM
+Torre Boldone;BG;LOM
+Torre d'Arese;PV;LOM
+Torre de' Busi;LC;LOM
+Torre de' Negri;PV;LOM
+Torre de' Picenardi;CR;LOM
+Torre de' Roveri;BG;LOM
+Torre di Santa Maria;SO;LOM
+Torre d'Isola;PV;LOM
+Torre Pallavicina;BG;LOM
+Torrevecchia Pia;PV;LOM
+Torricella del Pizzo;CR;LOM
+Torricella Verzate;PV;LOM
+Toscolano-Maderno;BS;LOM
+Tovo di Sant'Agata;SO;LOM
+Tradate;VA;LOM
+Traona;SO;LOM
+Travacō Siccomario;PV;LOM
+Travagliato;BS;LOM
+Travedona-Monate;VA;LOM
+Tremenico;LC;LOM
+Tremezzo;CO;LOM
+Tremosine;BS;LOM
+Trenzano;BS;LOM
+Trescore Balneario;BG;LOM
+Trescore Cremasco;CR;LOM
+Tresivio;SO;LOM
+Treviglio;BG;LOM
+Treviolo;BG;LOM
+Treviso Bresciano;BS;LOM
+Trezzano Rosa;MI;LOM
+Trezzano sul Naviglio;MI;LOM
+Trezzo sull'Adda;MI;LOM
+Trezzone;CO;LOM
+Tribiano;MI;LOM
+Trigolo;CR;LOM
+Triuggio;MB;LOM
+Trivolzio;PV;LOM
+Tromello;PV;LOM
+Tronzano Lago Maggiore;VA;LOM
+Trovo;PV;LOM
+Truccazzano;MI;LOM
+Turano Lodigiano;LO;LOM
+Turate;CO;LOM
+Turbigo;MI;LOM
+Ubiale Clanezzo;BG;LOM
+Uboldo;VA;LOM
+Uggiate-Trevano;CO;LOM
+Urago d'Oglio;BS;LOM
+Urgnano;BG;LOM
+Usmate Velate;MB;LOM
+Vaiano Cremasco;CR;LOM
+Vailate;CR;LOM
+Val di Nizza;PV;LOM
+Val Masino;SO;LOM
+Val Rezzo;CO;LOM
+Valbondione;BG;LOM
+Valbrembo;BG;LOM
+Valbrona;CO;LOM
+Valdidentro;SO;LOM
+Valdisotto;SO;LOM
+Valeggio;PV;LOM
+Valera Fratta;LO;LOM
+Valfurva;SO;LOM
+Valganna;VA;LOM
+Valgoglio;BG;LOM
+Valgreghentino;LC;LOM
+Valle Lomellina;PV;LOM
+Valle Salimbene;PV;LOM
+Valleve;BG;LOM
+Vallio Terme;BS;LOM
+Valmadrera;LC;LOM
+Valmorea;CO;LOM
+Valnegra;BG;LOM
+Valsecca;BG;LOM
+Valsolda;CO;LOM
+Valtorta;BG;LOM
+Valverde;PV;LOM
+Valvestino;BS;LOM
+Vanzaghello;MI;LOM
+Vanzago;MI;LOM
+Vaprio d'Adda;MI;LOM
+Varano Borghi;VA;LOM
+Varedo;MB;LOM
+Varenna;LC;LOM
+Varese;VA;LOM
+Varzi;PV;LOM
+Vedano al Lambro;MB;LOM
+Vedano Olona;VA;LOM
+Veddasca;VA;LOM
+Vedeseta;BG;LOM
+Veduggio con Colzano;MB;LOM
+Veleso;CO;LOM
+Velezzo Lomellina;PV;LOM
+Vellezzo Bellini;PV;LOM
+Vendrogno;LC;LOM
+Venegono Inferiore;VA;LOM
+Venegono Superiore;VA;LOM
+Veniano;CO;LOM
+Verano Brianza;MB;LOM
+Vercana;CO;LOM
+Verceia;SO;LOM
+Vercurago;LC;LOM
+Verdellino;BG;LOM
+Verdello;BG;LOM
+Verderio Inferiore;LC;LOM
+Verderio Superiore;LC;LOM
+Vergiate;VA;LOM
+Vermezzo;MI;LOM
+Vernate;MI;LOM
+Verolanuova;BS;LOM
+Verolavecchia;BS;LOM
+Verretto;PV;LOM
+Verrua Po;PV;LOM
+Vertemate con Minoprio;CO;LOM
+Vertova;BG;LOM
+Vervio;SO;LOM
+Vescovato;CR;LOM
+Vestone;BS;LOM
+Vestreno;LC;LOM
+Vezza d'Oglio;BS;LOM
+Viadana;MN;LOM
+Viadanica;BG;LOM
+Vidigulfo;PV;LOM
+Viganō;LC;LOM
+Vigano San Martino;BG;LOM
+Vigevano;PV;LOM
+Viggių;VA;LOM
+Vignate;MI;LOM
+Vigolo;BG;LOM
+Villa Biscossi;PV;LOM
+Villa Carcina;BS;LOM
+Villa Cortese;MI;LOM
+Villa d'Adda;BG;LOM
+Villa d'Almč;BG;LOM
+Villa di Chiavenna;SO;LOM
+Villa di Serio;BG;LOM
+Villa di Tirano;SO;LOM
+Villa d'Ogna;BG;LOM
+Villa Guardia;CO;LOM
+Villa Poma;MN;LOM
+Villachiara;BS;LOM
+Villanova d'Ardenghi;PV;LOM
+Villanova del Sillaro;LO;LOM
+Villanterio;PV;LOM
+Villanuova sul Clisi;BS;LOM
+Villasanta;MB;LOM
+Villimpenta;MN;LOM
+Villongo;BG;LOM
+Vilminore di Scalve;BG;LOM
+Vimercate;MB;LOM
+Vimodrone;MI;LOM
+Vione;BS;LOM
+Virgilio;MN;LOM
+Visano;BS;LOM
+Vistarino;PV;LOM
+Vittuone;MI;LOM
+Vizzola Ticino;VA;LOM
+Vizzolo Predabissi;MI;LOM
+Vobarno;BS;LOM
+Voghera;PV;LOM
+Volongo;CR;LOM
+Volpara;PV;LOM
+Volta Mantovana;MN;LOM
+Voltido;CR;LOM
+Zandobbio;BG;LOM
+Zanica;BG;LOM
+Zavattarello;PV;LOM
+Zeccone;PV;LOM
+Zelbio;CO;LOM
+Zelo Buon Persico;LO;LOM
+Zelo Surrigone;MI;LOM
+Zeme;PV;LOM
+Zenevredo;PV;LOM
+Zerbo;PV;LOM
+Zerbolō;PV;LOM
+Zibido San Giacomo;MI;LOM
+Zinasco;PV;LOM
+Zogno;BG;LOM
+Zone;BS;LOM

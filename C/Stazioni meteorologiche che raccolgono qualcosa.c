@@ -24,8 +24,7 @@ typedef City* Node;
 
 Node createNode(char* name, char* province, char* region, int maxTemp, int minTemp, int moisture);
 Node insertNode(Node head, char* name, char* province, char* region, int maxTemp, int minTemp, int moisture);
-Node getRandomNode(Node head);
-int listLen(Node head);
+int getLength(Node head);
 
 /*
 	PROTOYPES: FILES
