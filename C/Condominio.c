@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FILE_PATH "D:\\VSCode\\Workspace\\apartments.txt" //"C:\\Users\\mat.masdasdpero\\VSCode\\Workspace\\suites.txt"
+#define FILE_PATH "C:\\Users\\matte\\documents\\VSCode\\Workspace\\suites.txt"
+//#define FILE_PATH "C:\\Users\\mat.maspero\\documents\\VSCode\\Workspace\\suites.txt"
 
 //	TYPES
 //	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	--	//
@@ -220,6 +221,7 @@ int main() {
 
 		printf("\nPremi un tasto per continuare...");
 		getchar();
+		getchar();
 	}
 
 	return 0;
@@ -371,7 +373,7 @@ Node loadApartmentsFromFile() {
 		for(i = 0; i < 4; i ++) {
 			fscanf(
 				file,
-				"%d %d %s %d",
+				"%d %d %s %hhu",
 				&payments[i].number,
 				&payments[i].amount,
 				payments[i].expiration,
@@ -492,12 +494,11 @@ int readInt(const char* request, int min, int max) {
 }
 
 char* readString(const char* request, int maxLength) {
-	char temp[maxLength];
+	char* dest = (char*) malloc(maxLength * sizeof(char));
 	printf(request);
-	scanf("%s", temp);
+	scanf("%s", dest);
 
-	char* dest = (char*) malloc(strlen(temp) + 1);
-	strcpy(dest, temp);
+	dest = (char*) realloc(dest, (strlen(dest) + 1) * sizeof(char));
 	return dest;
 }
 
@@ -505,7 +506,7 @@ char* readDate(const char* request) {
 	char temp[6];
 	printf(request);
 	
-	while(scanf("%s/%s", temp) != 1)
+	while(scanf("%s", temp) != 1)
 		printf("\tInput non valido. Riprova: ");
 
 	char* dest = (char*) malloc(6 * sizeof(char));
