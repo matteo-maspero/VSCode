@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ASSETS_PATH "C:\\Users\\Matte\\Documents\\VSCode\\Assets\\"
-#define INPUT_FILE "listacomuni.txt"
+#define ASSETS_PATH "C:\\Users\\matte\\Documents\\VSCode\\Assets\\"
+#define INPUT_FILE "listacomuni"
 
 /*
 	TYPES
@@ -41,8 +41,7 @@ Node loadComuni(Node head, char* fileName);
 
 int main() {
 	Node head = NULL;
-	head = loadComuni(head, INPUT_FILE);
-
+	head = loadComuni(head, (char*) INPUT_FILE);
 	return 0;
 }
 
@@ -111,17 +110,15 @@ Node loadComuni(Node head, char* fileName) {
 	char buffer[128];
 
 	while(fgets(buffer, 128, inputFile) != NULL) {
-		char *line = strdup(buffer);
-		char *istat = strtok(buffer, ";");
-		char *name = strtok(NULL, ";");
-		char *province = strtok(NULL, ";");
-		char *region = strtok(NULL, ";");
-		char *prefix = strtok(NULL, ";");
-		char *postalCode = strtok(NULL, ";");
-		char *fiscalCode = strtok(NULL, ";");
+		char *istat = strdup(strtok(buffer, ";"));
+		char *name = strdup(strtok(NULL, ";"));
+		char *province = strdup(strtok(NULL, ";"));
+		char *region = strdup(strtok(NULL, ";"));
+		char *prefix = strdup(strtok(NULL, ";"));
+		char *postalCode = strdup(strtok(NULL, ";"));
+		char *fiscalCode = strdup(strtok(NULL, ";"));
 		int population = atoi(strtok(NULL, ";"));
-		char *link = strtok(NULL, ";");
-
+		char *link = strdup(strtok(NULL, "\n"));
 		head = appendNode(head, istat, name, province, region, prefix, postalCode, fiscalCode, population, link);
 	}
 
