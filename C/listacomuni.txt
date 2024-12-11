@@ -1,4 +1,5 @@
 0001;Comune1;BO;Emilia-Romagna;051;56449;BO00001;673324;http://www.comune.comune1.it
+0101;TestDadada;CO;Lombardia;023;34567;LA12345;123421343;http://www.comodsdsda.com
 0002;Comune2;PA;Sicilia;091;34454;PA00002;2907711;http://www.comune.comune2.it
 0003;Comune3;PA;Sicilia;091;27457;PA00003;1288876;http://www.comune.comune3.it
 0004;Comune4;RM;Lazio;06;17034;RM00004;2017870;http://www.comune.comune4.it
