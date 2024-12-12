@@ -287,15 +287,16 @@ void writeFieldsToDatFile(NodePt headAthletes, const char *filename) {
 	int i;
 
 	for(i = 0; i < 4; i ++) {
+		NodePt head = headAthletes;
 		DataToSave fieldToSave;
 		strcpy(fieldToSave.field, VetSpecialita[i]);
 		fieldToSave.points = 0;
 
-		while(headAthletes != NULL) {
-			if( strcmp(headAthletes->data.field, fieldToSave.field) == 0 )
-				fieldToSave.points = fieldToSave.points + headAthletes->data.points;
+		while(head != NULL) {
+			if( strcmp(head->data.field, fieldToSave.field) == 0 )
+				fieldToSave.points = fieldToSave.points + head->data.points;
 
-			headAthletes = headAthletes->next;
+			head = head->next;
 		}
 		
 		fwrite(&fieldToSave, sizeof(DataToSave), 1, datFile);
