@@ -82,13 +82,13 @@ uint roundUpToPowerOfTwo(uint value);
 
 int main() {
 	Word pool;
-	char class;
 	uint nGroups;
+	char class;
 
 	//	Get the data that will be analyzed to compute the subnets' configuration.
 	pool = getIpAddress("Inserisci l'indirizzo del pool di IP: ");
-	class = getClassFromAddress(pool);
 	nGroups = getUnsignedInt("Inserisci il numero di subnet: ");
+	class = getClassFromAddress(pool);
 	
 	uint groups[nGroups];
 	inputGroups(groups, nGroups);
@@ -100,7 +100,7 @@ int main() {
 
 	//	Print the subnets' configuration.
 	for(uint i = 0; i < nGroups; i++) {
-		printf("Subnet %u:\n", i + 1);
+		printf("\nSubnet %u:\n", i + 1);
 		printf("Indirizzo: ");
 		printAddress(subnets[i].address);
 		printf("\nGateway: ");
@@ -109,16 +109,18 @@ int main() {
 		printAddress(subnets[i].broadcast);
 		printf("\nMaschera: ");
 		printAddress(subnets[i].mask);
-		printf("\n\n");
+		printf("\n");
 	}
 
+	printf("\n");
+	getchar();
 	return 0;
 }
 
 Word getIpAddress(const char *prompt) {
 	Word address;
-	char buffer[16];
 	Byte b0, b1, b2, b3;
+	char buffer[16];
 	printf(prompt);
 
 	while( !scanf("%s", buffer) )
@@ -162,13 +164,11 @@ int compare(const void *a, const void *b) {
 }
 
 void computeSubnets(Subnet *subnets, Word pool, uint *groups, uint nGroups) {
-	Word address = pool;
-
 	for(uint i = 0; i < nGroups; i++) {
-		subnets[i].address = address;
-		subnets[i].gateway = address + 1;
-		address = address + roundUpToPowerOfTwo(groups[i]);
-		subnets[i].broadcast = address - 1;
+		subnets[i].address = pool;
+		subnets[i].gateway = pool + 1;
+		pool = pool + roundUpToPowerOfTwo(groups[i]);
+		subnets[i].broadcast = pool - 1;
 		subnets[i].mask = 0xFFFFFFFF - (roundUpToPowerOfTwo(groups[i]) - 1);
 	}
 }
