@@ -1,5 +1,0 @@
-18,Corti Attilio,25,avanzato,mezzofondo,97
-76,Renzi Marta,39,avanzato,libera,834
-81,Neri Francesca,23,avanzato,fondo,825
-8,Rossi Luigi,25,avanzato,fondo,652
-99,Bianchi Marco,29,esperto,mezzofondo,20
