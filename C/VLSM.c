@@ -29,11 +29,11 @@ typedef struct {
 Word getIpAddress(const char *prompt);
 
 /*
-	@brief Gets the class of an IP address.
+	@brief Gets the classe of an IP address.
 	@param address The IP address to analyze;
 	@return Either 'A', 'B', 'C' or 0 if the address is not handled.
 */
-char getClassFromAddress(Word address);
+char getclasseFromAddress(Word address);
 
 /*
 	@brief Reads an array of unsigned integers from the user.
@@ -61,7 +61,7 @@ int compare(const void *a, const void *b);
 	@brief Computes the configuration of the subnets.
 	@param subnets The array of subnets to fill;
 	@param pool The pool of IP addresses;
-	@param class The class of the IP addresses;
+	@param classe The classe of the IP addresses;
 	@param groups The array of hosts for each subnet;
 	@param nGroups The number of subnets.
 */
@@ -83,12 +83,12 @@ uint roundUpToPowerOfTwo(uint value);
 int main() {
 	Word pool;
 	uint nGroups;
-	char class;
+	char classe;
 
 	//	Get the data that will be analyzed to compute the subnets' configuration.
 	pool = getIpAddress("Inserisci l'indirizzo del pool di IP: ");
 	nGroups = getUnsignedInt("Inserisci il numero di subnet: ");
-	class = getClassFromAddress(pool);
+	classe = getclasseFromAddress(pool);
 	
 	uint groups[nGroups];
 	inputGroups(groups, nGroups);
@@ -131,7 +131,7 @@ Word getIpAddress(const char *prompt) {
 	return address;
 }
 
-char getClassFromAddress(Word address) {
+char getclasseFromAddress(Word address) {
 	//	We only need to analyze the first byte.
 	address = address >> 24;
 
