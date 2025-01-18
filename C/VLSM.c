@@ -145,8 +145,10 @@ char getclasseFromAddress(Word address) {
 }
 
 void inputGroups(uint *groups, uint nGroups) {
-	for(uint i = 0; i < nGroups; i++)
-		groups[i] = getUnsignedInt("Inserisci il numero di host per la subnet: ");
+	for(uint i = 0; i < nGroups; i++) {
+		printf("[Subnet %u] ", i + 1);
+		groups[i] = getUnsignedInt("Inserisci il numero di host necessari: ");
+	}
 }
 
 uint getUnsignedInt(const char *prompt) {
@@ -182,10 +184,10 @@ void printAddress(Word address) {
 	printf("%hhu.%hhu.%hhu.%hhu", b0, b1, b2, b3);
 }
 
-uint roundUpToPowerOfTwo(uint value) {
+uint roundUpToPowerOfTwo(uint nHosts) {
 	uint power = 1;
 
-	while(power < value)
+	while(power <= nHosts + 3)
 		power = power << 1;
 
 	return power;
