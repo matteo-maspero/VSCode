@@ -36,18 +36,26 @@ Word getIpAddress(const char *prompt);
 char getclasseFromAddress(Word address);
 
 /*
+	@brief Extracts the pool of IP addresses from a given IP address.
+	@param ip The IP address to analyze;
+	@param classe The classe of the IP address;
+	@return The pool of IP addresses.
+*/
+Word getClassHex(char classe);
+
+/*
 	@brief Reads an array of unsigned integers from the user.
 	@param groups The array to fill;
 	@param nGroups The number of elements to read.
 */
-void inputGroups(uint *groups, uint nGroups);
+void inputGroups(uint *groups, uint nGroups, char classe);
 
 /*
 	@brief Reads an unsigned integer from the user.
 	@param prompt The prompt to print on console;
 	@return The read unsigned integer.
 */
-uint getUnsignedInt(const char *prompt);
+uint getUInt(const char *prompt);
 
 /*
 	@brief Compares two unsigned integers.
@@ -82,16 +90,17 @@ uint roundUpToPowerOfTwo(uint value);
 
 int main() {
 	Word pool;
-	uint nGroups;
 	char classe;
+	uint nGroups;
 
 	//	Get the data that will be analyzed to compute the subnets' configuration.
 	pool = getIpAddress("Inserisci l'indirizzo del pool di IP: ");
-	nGroups = getUnsignedInt("Inserisci il numero di subnet: ");
 	classe = getclasseFromAddress(pool);
+	pool = pool & getClassHex(classe);
+	nGroups = getUInt("Inserisci il numero di subnet: ");
 	
 	uint groups[nGroups];
-	inputGroups(groups, nGroups);
+	inputGroups(groups, nGroups, classe);
 	qsort(groups, nGroups, sizeof(uint), compare);
 
 	//	Compute the subnets' configuration.
@@ -122,7 +131,7 @@ Word getIpAddress(const char *prompt) {
 	Byte b0, b1, b2, b3;
 	char buffer[16];
 	printf(prompt);
-
+	
 	while( !scanf("%s", buffer) )
 		printf("Indirizzo non valido, riprova: ");
 
@@ -141,17 +150,36 @@ char getclasseFromAddress(Word address) {
 		return 'B';
 	if(address < 224)
 		return 'C';
-	return 0;
+
+	printf("Classe D-E non supportate.");
+	exit(1);
 }
 
-void inputGroups(uint *groups, uint nGroups) {
+Word getClassHex(char classe) {
+	if(classe == 'A')
+		return 0xFF000000;
+	if(classe == 'B')
+		return 0xFFFF0000;
+	
+	return 0xFFFFFF00;
+}
+
+void inputGroups(uint *groups, uint nGroups, char classe) {
+	int total = 0;
+
 	for(uint i = 0; i < nGroups; i++) {
 		printf("[Subnet %u] ", i + 1);
-		groups[i] = getUnsignedInt("Inserisci il numero di host necessari: ");
+		groups[i] = getUInt("Inserisci il numero di host necessari: ");
+		total = total + groups[i];
+	}
+	
+	if( total > (0xffffff & getClassHex('C')) ) {
+		printf("Troppi host richiesti.");
+		exit(1);
 	}
 }
 
-uint getUnsignedInt(const char *prompt) {
+uint getUInt(const char *prompt) {
 	uint value;
 	printf(prompt);
 
