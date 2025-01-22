@@ -56,6 +56,7 @@ int main() {
 	subnetCount = inputUInt("Inserisci il numero di subnet: (2, "MAX_SUBNETS") ", 2, atoi(MAX_SUBNETS));
 	uint sizes[subnetCount];
 	inputSizes(sizes, subnetCount);
+	
 	Subnet subnets[subnetCount];
 	computeSubnets(subnets, sizes, subnetCount, poolAddress);
 
