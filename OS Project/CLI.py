@@ -1,80 +1,51 @@
-import os
-
-class Command:
-	def __init__(self, desc : str, name : str):
-		self.__desc = desc
-		self.__name = name
-
-	def __call__(self, *args):
-		globals().get(self.__name)(*args)
-
-	def getDesc(self):
-		return self.__desc
-
-COMMANDS = {
-	('clear', 'cls') : Command('Clears the console.', '__close'),
-	('exit') : Command('Exits the program.', '__exit'),
-	('help', '?') : Command('Displays a list of commands.', '__help'),
-}
-
-def __close():
-	if os.name == 'nt':
-		os.system('cls')
-	else:
-		os.system('clear')
-
-def __exit():
-	confirm = input('Are you sure you want to exit? (y/n) ').lower()
-
-	if confirm == 'y':
-		exit()
-	elif confirm == 'n':
-		return
-
-def __help(requested : str = None):
-	if requested:
-		for aliases, command in COMMANDS.items():
-			if requested in aliases:
-				print(f'{aliases}\t{command.getDesc()}')
-				return
-		print('Command not found. Type "help" or "?" for a list of commands')
-		return
-	
-	for aliases, command in COMMANDS.items():
-		print(f'{aliases}\t{command.getDesc()}')
-	print('Type "help" or "?" followed by a command for more information.')
+from os import system as execute
 
 class CLI:
 	def __init__(self):
 		self.__running = False
 		self.__buffer : str
-		self.__command : str
-		self.__args : tuple
+		
+		self.__commands = {
+			'clear' : [self.clear, 'Clears the console from previous content.'],
+			'exit' : [self.exit, 'Kills the CLI process.'],
+			'help' : [self.help, 'Provides information about the supported commands.'],
+		}
 
 	def run(self):
 		self.__running = True
 
 		while self.__running:
-			self.__inputBuffer()
-			self.__parseBuffer()
-			self.__executeCommand()
-
-	def __inputBuffer(self):
+			self.__input()
+			self.__execute()
+	
+	def __input(self):
 		self.__buffer = input('> ')
 
-	def __parseBuffer(self):
-		self.__buffer = self.__buffer.strip().lower()
-		self.__command, *self.__args = self.__buffer.split(' ')
+	def __execute(self):
+		#	Parse the buffer into a command with possible arguments.
+		command = self.__buffer.strip().lower()
+		command, *arguments = command.split(' ')
 
-	def __executeCommand(self):
 		try:
-			for aliases, command in COMMANDS.items():
-				if self.__command in aliases:
-					command(*self.__args)
-					return
-			print('Invalid input. Type "help" or "?" for a list of commands.')
+			#	Tries executing the command with the given arguments.
+			self.__commands[command][0](*arguments)
+		except KeyError:
+			#	Handles the case where the command is not supported.
+			print('Invalid command. Type "help" for a list of supported commands.')
 		except TypeError:
-			print('Invalid arguments. Type "help" or "?" for a list of commands.')
+			#	Handles the case where the command is supported but the arguments are invalid
+			print('Invalid arguments passed to command.')
+		except Exception:
+			#	Handles the case where the command failed to execute.
+			raise Exception
+	
+	def clear(self):
+		execute('cls')
 
-cli = CLI()
-cli.run()
+	def exit(self):
+		self.__running = False
+
+	def help(self):
+		for command, [_, description] in self.__commands.items():
+			#	Prints the formatted command (fixed length of 16) and its description.
+			print(f'{command : <16}{description}')
