@@ -25,6 +25,15 @@ class Scheduler:
 		self.readyQueue.remove(job)
 		self.gui.updateJobsList()
 
+	def reset(self):
+		self.readyQueue.clear()
+		self.running = False
+		self.tick = 0
+		self.chartInfo.clear()
+		self.gui.updateJobsList()
+		self.gui.updateGanttChart()
+		self.gui.updateStatistics(0, 0)
+
 	# SJF
 	def sortSJF(self):
 		self.readyQueue.sort(key = lambda job: (job.burst, -job.priority))

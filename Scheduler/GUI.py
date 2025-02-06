@@ -21,6 +21,7 @@ class Gui:
 		self.setupJobInput()
 		self.setupGanttChart()
 		self.setupStatistics()
+		self.setupResetButton()
 
 	def setupRoot(self):
 		self.root = Tk()
@@ -141,6 +142,10 @@ class Gui:
 	def updateStatistics(self, w, t):
 		self.mediumWaitTimeLabel.config(text=str(w))
 		self.mediumTurnaroundTimeLabel.config(text=str(t))
+
+	def setupResetButton(self):
+		self.resetButton = Button(self.jobInputFrame, text="Reset", command=self.scheduler.reset, bg=GREY3, fg=WHITE1)
+		self.resetButton.grid(row=7, column=0, columnspan=2, pady=10)
 
 	"""
 		Functions
