@@ -109,8 +109,8 @@ class Scheduler:
 			total_turnaround += turnaround
 		
 		num_jobs = len(self.readyQueue)
-		avg_turnaround = total_turnaround / num_jobs
-		avg_waiting = total_waiting / num_jobs
+		avg_turnaround = total_turnaround / num_jobs if num_jobs > 0 else 0
+		avg_waiting = total_waiting / num_jobs if num_jobs > 0 else 0
 		self.gui.updateStatistics(avg_waiting, avg_turnaround)
 
 if __name__ == "__main__":
