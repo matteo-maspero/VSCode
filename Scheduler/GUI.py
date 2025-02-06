@@ -1,6 +1,7 @@
 from tkinter import *
 from Job import Job
-import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 """
 	Color palette
@@ -18,6 +19,8 @@ class Gui:
 		self.setupWindow()
 		self.setupJobsList()
 		self.setupJobInput()
+		self.setupGanttChart()
+		self.setupStatistics()
 
 	def setupRoot(self):
 		self.root = Tk()
@@ -69,6 +72,12 @@ class Gui:
 		self.clearButton = Button(self.jobInputFrame, text="Clear", command=self.clearInputs, bg=GREY3, fg=WHITE1)
 		self.clearButton.grid(row=5, column=1, pady=10)
 
+		self.fcfsButton = Button(self.jobInputFrame, text="Execute FCFS", command=self.scheduler.executeFCFS, bg=GREY3, fg=WHITE1)
+		self.fcfsButton.grid(row=6, column=0, pady=10)
+
+		self.sjfButton = Button(self.jobInputFrame, text="Execute SJF", command=self.scheduler.executeSJF, bg=GREY3, fg=WHITE1)
+		self.sjfButton.grid(row=6, column=1, pady=10)
+
 	def addJob(self):
 		try:
 			name = self.jobIdEntry.get()
@@ -93,6 +102,45 @@ class Gui:
 		self.jobsList.delete(0, END)
 		for job in self.scheduler.readyQueue:
 			self.jobsList.insert(END, f"Job ID: {job.name}, Priority: {job.priority}, Arrival: {job.arrival}, Burst: {job.burst}")
+
+	def setupGanttChart(self):
+		self.ganttFrame = Frame(self.window, bg=GREY1, highlightthickness=1, highlightbackground=GREY2, highlightcolor=GREY3)
+		self.ganttFrame.grid(row=0, column=1, rowspan=2, sticky="nsew")
+
+		self.fig, self.ax = plt.subplots(figsize=(10, 5))
+		self.canvas = FigureCanvasTkAgg(self.fig, master=self.ganttFrame)
+		self.canvas.get_tk_widget().pack(fill=BOTH, expand=True)
+
+	def updateGanttChart(self):
+		self.ax.clear()
+		self.ax.set_title('Gantt Chart')
+		self.ax.set_xlabel('Time ms')
+		self.ax.set_ylabel('Jobs')
+
+		job_colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan']
+		for i, (job, start) in enumerate(self.scheduler.chartInfo):
+			self.ax.broken_barh([(start, job.burst)], (i * 15, 9), facecolors=(job_colors[i % len(job_colors)]))
+			self.ax.text(start + job.burst / 2, i * 15 + 4.5, job.burst, ha='center', va='center', color='white')
+
+		self.ax.set_yticks([i * 15 + 4.5 for i in range(len(self.scheduler.chartInfo))])
+		self.ax.set_yticklabels([job.name for job, _ in self.scheduler.chartInfo])
+		self.canvas.draw()
+
+	def setupStatistics(self):
+		self.statsFrame = Frame(self.window, bg=GREY1, highlightthickness=1, highlightbackground=GREY2, highlightcolor=GREY3)
+		self.statsFrame.grid(row=2, column=1, sticky="nsew")
+
+		Label(self.statsFrame, text="Medium Wait Time:", bg=GREY1, fg=WHITE1, font=("Helvetica", 14)).grid(row=0, column=0, padx=10, pady=10, sticky="w")
+		self.mediumWaitTimeLabel = Label(self.statsFrame, text="0", bg=GREY1, fg=WHITE1, font=("Helvetica", 14))
+		self.mediumWaitTimeLabel.grid(row=0, column=1, padx=10, pady=10, sticky="e")
+
+		Label(self.statsFrame, text="Medium Turnaround Time:", bg=GREY1, fg=WHITE1, font=("Helvetica", 14)).grid(row=1, column=0, padx=10, pady=10, sticky="w")
+		self.mediumTurnaroundTimeLabel = Label(self.statsFrame, text="0", bg=GREY1, fg=WHITE1, font=("Helvetica", 14))
+		self.mediumTurnaroundTimeLabel.grid(row=1, column=1, padx=10, pady=10, sticky="e")
+
+	def updateStatistics(self, w, t):
+		self.mediumWaitTimeLabel.config(text=str(w))
+		self.mediumTurnaroundTimeLabel.config(text=str(t))
 
 	"""
 		Functions
