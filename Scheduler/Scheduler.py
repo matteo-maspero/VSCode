@@ -1,14 +1,18 @@
 import time as Time
+from idlelib.debugobj_r import remote_object_tree_item
+
 from Job import Job, State
 from Gui import Gui
 
 class Scheduler:
 	def __init__(self):
 		self.readyQueue: list[Job] = []
-		self.running: bool = False
+		self.jobs: list[Job] = []
+		self.queue: list[Job] = []
 		self.tick: int = 0
 		self.chartInfo = []
 		self.gui = Gui(self)
+		self.quantum: int = 4
 
 	def sleep(self, ms: int):
 		#Time.sleep(ms * .001)
@@ -27,7 +31,6 @@ class Scheduler:
 
 	def reset(self):
 		self.readyQueue.clear()
-		self.running = False
 		self.tick = 0
 		self.chartInfo.clear()
 		self.gui.updateJobsList()
@@ -40,19 +43,12 @@ class Scheduler:
 		self.gui.updateJobsList()
 	
 	def executeSJF(self):
-		if self.running:
-			return
-		
 		self.tick = 0
 		self.chartInfo.clear()
 		self.sortSJF()
 		jobs = self.readyQueue.copy()
-		self.running = True
 
-		while self.running:
-			if not jobs:
-				break
-
+		while jobs:
 			if jobs[0].arrival > self.tick:
 				self.sleepUntil(jobs[0].arrival)
 				
@@ -62,7 +58,6 @@ class Scheduler:
 			self.sleep(job.burst)
 			job.state = State.terminated
 			self.chartInfo.append((job, start))
-		self.running = False
 		self.gui.updateGanttChart()
 		self.updateTimes()
 
@@ -72,19 +67,12 @@ class Scheduler:
 		self.gui.updateJobsList()
 
 	def executeFCFS(self):
-		if self.running:
-			return
-		
 		self.tick = 0
 		self.chartInfo.clear()
 		self.sortFCFS()
 		jobs = self.readyQueue.copy()
-		self.running = True
 
-		while self.running:
-			if not jobs:
-				break
-
+		while jobs:
 			if jobs[0].arrival > self.tick:
 				self.sleepUntil(jobs[0].arrival)
 				
@@ -94,7 +82,45 @@ class Scheduler:
 			self.sleep(job.burst)
 			job.state = State.terminated
 			self.chartInfo.append((job, start))
-		self.running = False
+		self.gui.updateGanttChart()
+		self.updateTimes()
+
+	#RR
+	def queue_waiting_jobs(self):
+		while self.jobs and self.jobs[0].arrival <= self.tick:
+			job = self.jobs.pop(0)
+			job.state = State.ready
+			self.queue.append(job)
+
+	def run(self):
+		if not self.readyQueue:
+			return
+
+		self.jobs = self.readyQueue.copy()
+		self.jobs.sort(key=lambda value: (value.arrival, value.priority))
+
+		while self.jobs or self.queue:
+			if not self.queue and self.jobs[0].arrival > self.tick:
+				self.sleepUntil(self.jobs[0].arrival)
+
+			self.queue_waiting_jobs()
+			job = self.queue[0]
+			execution_time = min(self.quantum, job.burst)
+			self.chartInfo.append((job, self.tick))
+			job.state = State.running
+			job.burst = max(0, job.burst - execution_time)
+
+			self.sleep(execution_time)
+			self.queue_waiting_jobs()
+
+			if job.burst > 0:
+				job.state = State.waiting
+				self.queue.append(job)
+				self.queue[0].state = State.ready
+			else:
+				job.state = State.terminated
+
+			self.queue.remove(job)
 		self.gui.updateGanttChart()
 		self.updateTimes()
 

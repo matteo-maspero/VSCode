@@ -26,7 +26,7 @@ class Gui:
 	def setupRoot(self):
 		self.root = Tk()
 		self.root.title("Scheduler GUI")
-		self.root.iconbitmap('Scheduler\\icon.ico')
+		self.root.iconbitmap('icon.ico')
 		self.root.geometry("1000x600")
 		self.root.state("zoomed")
 
@@ -78,6 +78,9 @@ class Gui:
 
 		self.sjfButton = Button(self.jobInputFrame, text="Execute SJF", command=self.scheduler.executeSJF, bg=GREY3, fg=WHITE1)
 		self.sjfButton.grid(row=6, column=1, pady=10)
+
+		#self.rrButton = Button(self.jobInputFrame, text="Execute RR", command=self.scheduler.run, bg=GREY3, fg=WHITE1)
+		#self.rrButton.grid(row=8, column=0, pady=10, columnspan=2)
 
 	def addJob(self):
 		try:

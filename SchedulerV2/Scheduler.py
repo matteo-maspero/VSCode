@@ -1,17 +1,13 @@
 from abc import abstractmethod
-from time import sleep
-from Job import Job
-from JobInfo import JobInfo
+from Job import Job, JobInfo
 
 class Scheduler:
-	def __init__(self):
-		self.processes: list[Job] = []
-		self.jobs: list[Job] = []
-		self.chart_info: list[JobInfo] = []
-		self.time: int = 0
-		self.is_running: bool = False
-		self.is_real_time: bool = False
+	processes: list[Job] = []
+	jobs: list[Job] = []
+	chart_info: list[JobInfo] = []
+	time: int = 0
 
+	def __init__(self):
 		# hooks to GUI methods
 		self.update_processes_hook: callable = None
 		self.update_chart_hook: callable = None
@@ -29,8 +25,6 @@ class Scheduler:
 			self.update_processes_hook()
 
 	def sleep(self, time_ms: int):
-		if self.is_real_time:
-			sleep(time_ms / 1000)
 		self.time = self.time + time_ms
 
 	def sleep_until(self, time: int):
@@ -40,8 +34,10 @@ class Scheduler:
 	def run(self):
 		pass
 
-	def stop(self):
+	def reset(self):
 		self.jobs = []
 		self.chart_info = []
 		self.time = 0
-		self.update_chart_hook()
+
+		if self.update_chart_hook:
+			self.update_chart_hook()
