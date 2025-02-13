@@ -2,7 +2,6 @@ from tkinter import *
 from matplotlib import pyplot
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from Job import Job, State, JobInfo
-from Scheduler import Scheduler
 
 """
 	COLOR PALETTE
@@ -17,7 +16,8 @@ WHITE1 = "#f0f0f0"
 
 class GUI:
 	def __init__(self):
-		self.scheduler: Scheduler = Scheduler()
+		self.x: int = 0
+		self.y: int = 0
 
 		"""
 			ROOT CONFIGURATION
@@ -75,8 +75,9 @@ class GUI:
 		"""
 			PROCESSES LIST CONFIGURATION
 		"""
-		self.list = Listbox(master=self.window, bg=GREY2, highlightthickness=.5, highlightbackground=GREY1, highlightcolor=GREY1, border=0)
+		self.list = Frame(master=self.window, bg=GREY2, highlightthickness=.5, highlightbackground=GREY1, highlightcolor=GREY1, border=0)
 		self.list.grid(row=1, column=0, sticky="nsew")
+		self.list.pack_propagate(False)
 
 		"""
 			GANTT CHART CONFIGURATION
@@ -89,6 +90,7 @@ class GUI:
 		"""
 		self.inputs = Frame(master=self.window, bg=GREY2, highlightthickness=.5, highlightbackground=GREY1, highlightcolor=GREY1, border=0)
 		self.inputs.grid(row=2, rowspan=2, column=0, sticky="nsew")
+		self.update_list([])
 
 		"""
 			OUTPUTS CONFIGURATION
@@ -99,11 +101,18 @@ class GUI:
 	"""
 		IMPORTANT METHODS
 	"""
+	def update_list(self, jobs: list[Job]):
+		columns = ["Process:", "Arrival ms:", "Burst ms:", "Priority:"]
 
-	def update_list(self, processes: list[Job]):
-		self.list.delete(0, END)
-		for process in processes:
-			self.list.insert(END, process)
+		for j, header in enumerate(columns):
+			self.list.grid_columnconfigure(j, weight=0)
+			label = Label(master=self.list, text=header, bg=GREY2, fg=WHITE1, font=("Arial", 10, "bold"), border=0)
+			label.grid(row=0, column=j, sticky="nsew", pady=10)
+
+		for i, job in enumerate(jobs):
+			for j, value in enumerate([job.name, job.arrival, job.burst, job.priority]):
+				label = Label(master=self.list, text=value, bg=GREY2, fg=WHITE1, font=("Arial", 10), border=0)
+				label.grid(row=i+1, column=j, sticky="nsew", pady=10)
 
 	"""
 		OTHER METHODS
@@ -118,11 +127,11 @@ class GUI:
 		self.x = event.x
 		self.y = event.y
 
-	def stop_move(self, event):
+	def stop_move(self, _):
 		self.x = None
 		self.y = None
 
-	def do_move(self, event):
+	def do_move(self, _):
 		x = self.root.winfo_pointerx() - self.x
 		y = self.root.winfo_pointery() - self.y
 		self.root.geometry(f"+{x}+{y}")

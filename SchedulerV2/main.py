@@ -1,7 +1,12 @@
-from FCFS import FCFS
-from SJF import SJF
-from RR import RR
-from GUI import GUI
+from Scheduler import Scheduler
+import Job
 
-gui = GUI()
-gui.root.mainloop()
+scheduler = Scheduler()
+
+scheduler.add_process(Job.Job("a", 10, 5, 0))
+scheduler.add_process(Job.Job("b", 23, 23, 0))
+scheduler.add_process(Job.Job("c", 43, 4, 0))
+scheduler.add_process(Job.Job("d", 5, 3, 0))
+scheduler.add_process(Job.Job("e", 43, 12, 0))
+
+scheduler.run()
