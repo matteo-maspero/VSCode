@@ -111,7 +111,7 @@ class JobsPanel(Frame):
 				self.grid(row=len(parent.items), column=0, sticky="ew", padx=1, pady=1)
 				self.columnconfigure(index=0, weight=1)
 
-				# TODO
+				# TODO:
 				
 
 if __name__ == "__main__":
