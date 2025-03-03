@@ -1,138 +1,159 @@
 import tkinter as tk
 from tkinter import ttk
-import sys, pywinstyles
-
-from sv_ttk import set_theme
+import Modules.theme as theme
+from Modules.theme import Palette
 
 
 class App(tk.Tk):
 	def __init__(self):
 		super().__init__()
-		self.win_version = sys.getwindowsversion()
-		self.job_list = JobInfo(master=self)
+		self.style = ttk.Style(master=self)
+		self.h_pane = HPane(master=self)
 
 		self.setup()
-		self.configure_grid()
 		self.enable_dark_theme()
 
 	def setup(self):
 		self.minsize(width=800, height=600)
+		self.geometry("800x600")
 		self.state("zoomed")
 		self.title("Scheduler GUI")
 
-	def configure_grid(self):
-		self.columnconfigure(index=0, weight=1)
-		self.columnconfigure(index=1, weight=3)
-		self.rowconfigure(index=0, weight=3)
-		self.rowconfigure(index=1, weight=2)
-
 	def enable_dark_theme(self):
-		# Enable our custom version of "Azure" theme
-		self.call("source", "theme\\azure.tcl")
-
-		if self.win_version.major < 10:
-			return
-
-		# Apply assets mode to our header for Windows 10 and above
-		if self.win_version.build < 22000:
-			pywinstyles.apply_style(self, "assets")
-			self.update()
-		else:
-			pywinstyles.change_header_color(self, "#2b2d30")
+		theme.create_dark_theme(window=self)
+		theme.use_dark_theme(window=self)
 
 
-class Panel(ttk.Notebook):
-	def __init__(self, master: App):
-		super().__init__(master=master)
+class HPane(tk.PanedWindow):
+	def __init__(self, master: App, **kwargs):
+		super().__init__(master=master, **kwargs)
+		self.job_handler = JobHandler(master=self)
+		self.v_paned = VPaned(master=self)
 
 		self.setup()
-		self.configure_grid()
+		self.add_panes()
 
 	def setup(self):
-		pass
+		self.configure(orient="horizontal", background=Palette.BG_DARK, sashwidth=3, border=0)
+		self.pack(fill="both", expand=True)
 
-	def configure_grid(self):
-		self.columnconfigure(index=0, weight=1)
-		self.rowconfigure(index=0, weight=1)
+	def add_panes(self):
+		self.add(self.job_handler, width=1, minsize=300, stretch="always")
+		self.add(self.v_paned, width=4, minsize=1300, stretch="always")
 
 
-class JobInfo(Panel):
-	def __init__(self, master: App):
-		super().__init__(master=master)
+class JobHandler(tk.PanedWindow):
+	def __init__(self, master: HPane, **kwargs):
+		super().__init__(master=master, **kwargs)
+		self.job_info = JobInfo(master=self)
+		self.shell = Shell(master=self)
+
+		self.setup()
+		self.add_panes()
+
+	def setup(self):
+		self.configure(orient="vertical", background=Palette.BG_DARK, sashwidth=3, border=0)
+
+	def add_panes(self):
+		self.add(self.job_info, height=7, minsize=400, stretch="always")
+		self.add(self.shell, height=3, minsize=200, stretch="always")
+
+		
+class JobInfo(ttk.Frame):
+	def __init__(self, master: JobHandler, **kwargs):
+		super().__init__(master=master, **kwargs)
 		self.job_tree = JobTree(master=self)
+		self.job_tree_scrollbar = JobTreeScrollbar(master=self, command=self.job_tree.yview)
+		self.job_tree.configure(yscrollcommand=self.job_tree_scrollbar.set)
 
 		self.setup()
-		self.add(self.job_tree, text="Job info")
 
 	def setup(self):
-		self.grid(row=0, column=0, sticky="nsew")
+		self.pack(side="top", fill="both", expand=True)
 
-	def create_widgets(self):
-		pass
-
-
+		
 class JobTree(ttk.Treeview):
-	def __init__(self, master: JobInfo):
-		super().__init__(master=master)
-		self.scrollbar = Scrollbar(master=self)
-
+	def __init__(self, master: JobInfo, **kwargs):
+		super().__init__(master=master, **kwargs)
 		self.setup()
-		self.configure_tree()
+		self.setup_columns()
+
+		for i in range(1,40):
+			self.insert(parent="", index="end", values=(f"P{i}", 0, 0, 0))
+
 
 	def setup(self):
 		self.configure(
 			columns=("name", "arrival", "burst", "priority"),
 			selectmode="extended",
 			show="headings",
-			yscrollcommand=self.scrollbar.set,
 		)
-		self.grid(row=0, column=0, sticky="nsew")
+		self.pack(side="left", fill="both", expand=True)
 
-		a = [
-			("P1", 0, 5, 1),
-			("P2", 0, 3, 2),
-			("P3", 0, 8, 3),
-			("P4", 0, 6, 4),
-			("P5", 0, 2, 5),
-		]
-
-		for i in a:
-			self.insert("", "end", values=i)
-
-	def configure_tree(self):
-		self.column("name", width=140)
-		self.column("arrival", width=100)
-		self.column("burst", width=100)
-		self.column("priority", width=100)
+	def setup_columns(self):
+		self.column("name", width=80)
+		self.column("arrival", width=40)
+		self.column("burst", width=40)
+		self.column("priority", width=40)
 		self.heading("name", text="Job name", anchor="w")
-		self.heading("arrival", text="Arrival ms", anchor="w")
-		self.heading("burst", text="Burst ms", anchor="w")
+		self.heading("arrival", text="Arrival", anchor="w")
+		self.heading("burst", text="Burst", anchor="w")
 		self.heading("priority", text="Priority", anchor="w")
 
 
-class Scrollbar(ttk.Scrollbar):
-	def __init__(self, master: JobTree):
-		super().__init__(master=master, command=master.yview)
-
+class JobTreeScrollbar(ttk.Scrollbar):
+	def __init__(self, master: JobInfo, **kwargs):
+		super().__init__(master=master, **kwargs)
 		self.setup()
 
 	def setup(self):
+		self.configure(orient="vertical")
 		self.pack(side="right", fill="y")
 
 
 class Shell(ttk.Frame):
-	def __init__(self, master: JobInfo):
-		super().__init__(master=master)
+	def __init__(self, master: JobHandler, **kwargs):
+		super().__init__(master=master, **kwargs)
 
-	def setup(self):
-		self.grid(row=1, column=0, sticky="nsew")
-
-
-class Button(ttk.Button):
-	def __init__(self, master: Shell):
-		super().__init__(master=master)
+		self.a = ttk.Label(master=self, text="Shell")
+		self.a.pack(fill="both", expand=True)
 
 		self.setup()
 
 	def setup(self):
-		self.grid(row=0, column=0, sticky="nsew")
+		self.pack(side="bottom", fill="both", expand=True)
+
+
+class VPaned(tk.PanedWindow):
+	def __init__(self, master: HPane, **kwargs):
+		super().__init__(master=master, **kwargs)
+		self.chart = Chart(master=self)
+		self.console = Console(master=self)
+
+		self.setup()
+		self.add_panes()
+
+	def setup(self):
+		self.configure(orient="vertical", background=Palette.BG_DARK, sashwidth=3, border=0)
+
+	def add_panes(self):
+		self.add(self.chart, height=5, minsize=600, stretch="always")
+		self.add(self.console, height=3, minsize=200, stretch="always")
+
+
+class Chart(ttk.Frame):
+	def __init__(self, master: VPaned, **kwargs):
+		super().__init__(master=master, **kwargs)
+		self.setup()
+
+	def setup(self):
+		pass
+
+
+class Console(ttk.Frame):
+	def __init__(self, master: VPaned, **kwargs):
+		super().__init__(master=master, **kwargs)
+		self.setup()
+
+	def setup(self):
+		pass
