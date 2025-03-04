@@ -5,10 +5,11 @@ from pywinstyles import apply_style as change_header_color_w10, change_header_co
 
 class Palette:
 	BG_NORMAL = "#2b2d30"
+	BG_EVEN = "#202030"
 	BG_DARK = "#1e1f22"
 	BG_LIGHT = "#3c3f41"
+	BG_SELECTED = "#214283"
 	FG_NORMAL = "#ffffff"
-	FG_SELECTED = "#214283"
 
 
 def create_dark_theme(window):
@@ -32,7 +33,7 @@ def create_dark_theme(window):
 					"fieldbackground": Palette.BG_DARK,
 				},
 				"map": {
-					"background": [("selected", Palette.FG_SELECTED)],
+					"background": [("selected", Palette.BG_SELECTED)],
 				}
 			},
 
@@ -43,6 +44,19 @@ def create_dark_theme(window):
 				}
 			},
 
+			"Item": {
+				"configure": {
+					"indicatorsize": 12,
+					"indicatormargins": 4,
+				}
+			},
+
+			"Cell": {
+				"configure": {
+					"padding": 4,
+				}
+			},
+
 			"Vertical.TScrollbar": {
 				"configure": {
 					"arrowsize": 8,
@@ -50,6 +64,46 @@ def create_dark_theme(window):
 					"background": Palette.BG_LIGHT,
 					"troughcolor": Palette.BG_NORMAL,
 					"width": 8,
+				}
+			},
+
+			"TButton": {
+				"configure": {
+					"background": Palette.BG_LIGHT,
+					"foreground": Palette.FG_NORMAL,
+					"padding": 4,
+				},
+				"map": {
+					"background": [("active", Palette.BG_SELECTED)],
+					"padding": [("pressed", (5,5,3,3))],
+				}
+			},
+
+			"TLabel": {
+				"configure": {
+					"background": Palette.BG_LIGHT,
+					"foreground": Palette.FG_NORMAL,
+					"padding": 4,
+				}
+			},
+
+			"TCombobox": {
+				"configure": {
+					"arrowcolor": Palette.FG_NORMAL,
+					"arrowsize": 12,
+					"background": Palette.BG_LIGHT,
+					"foreground": Palette.FG_NORMAL,
+					"selectbackground": Palette.BG_LIGHT,
+					"padding": 4,
+				}
+			},
+
+			"TEntry": {
+				"configure": {
+					"background": Palette.BG_LIGHT,
+					"foreground": Palette.FG_NORMAL,
+					"padding": 4,
+					"insertcolor": Palette.FG_NORMAL,
 				}
 			},
 		}
